@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vishwaraj Saxena - Portfolio</title>
+  <style>
+    /* Reset & base */
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.6; background:#f9f9f9; color:#222;}
+    a {text-decoration:none; color:#0073e6;}
+    a:hover {text-decoration:underline;}
+
+    /* Container */
+    .container {width:90%; max-width:1000px; margin:auto; padding:40px 0;}
+
+    /* Header */
+    header {text-align:center; padding-bottom:40px;}
+    header h1 {font-size:2.5rem; margin-bottom:10px;}
+    header p {font-size:1rem; color:#555;}
+    .contact a {margin:0 10px; font-weight:bold;}
+
+    /* Section titles */
+    section {margin-bottom:50px;}
+    section h2 {font-size:1.8rem; border-bottom:2px solid #0073e6; padding-bottom:5px; margin-bottom:20px; color:#0073e6;}
+
+    /* About */
+    #about p {max-width:800px; margin:auto; text-align:center; color:#444;}
+
+    /* Projects */
+    .project {background:#fff; padding:20px; margin-bottom:20px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+    .project h3 {margin-bottom:10px; color:#222;}
+    .project .tech {font-size:0.9rem; color:#555; margin-bottom:10px;}
+    .project ul {margin-left:20px; margin-bottom:10px;}
+    .project ul li {margin-bottom:8px;}
+
+    /* Skills */
+    .skills {display:flex; flex-wrap:wrap; justify-content:center;}
+    .skills .skill-category {background:#fff; padding:15px 20px; margin:10px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); flex:1 1 250px;}
+    .skills h3 {margin-bottom:10px; color:#0073e6;}
+    .skills p {font-size:0.9rem; color:#555;}
+
+    /* Footer */
+    footer {text-align:center; padding:30px 0; color:#555; border-top:1px solid #ddd;}
+    footer a {margin:0 10px;}
+    
+    /* Responsive */
+    @media(max-width:600px){
+      header h1 {font-size:2rem;}
+      section h2 {font-size:1.5rem;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Vishwaraj Saxena</h1>
+    <p>Bengaluru, India | <a href="mailto:vishwarajsaxena@gmail.com">vishwarajsaxena@gmail.com</a></p>
+    <div class="contact">
+      <a href="https://www.linkedin.com/in/vishwarajsaxena/" target="_blank">LinkedIn</a>|
+      <a href="https://github.com/vishwaraj25" target="_blank">GitHub</a>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- About -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Aspiring Product Manager and Computer Science & Electronics Engineering student.  
+        Passionate about building data-driven products and AI-enabled solutions that solve real-world problems.  
+        Experienced in designing ML and embedded systems projects, from concept to deployment, with a focus on user impact and metrics.
+      </p>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <div class="project">
+        <h3>Gym Posture Analyzer (Deployed) – Sept 2025</h3>
+        <div class="tech">Technologies: Python, OpenCV, MediaPipe, Gradio</div>
+        <ul>
+          <li>Designed a real-time posture analysis tool tested on 150+ sample workout videos across squats, curls, push-ups, and lunges to ensure reliable tracking across varied body types and camera angles.</li>
+          <li>Achieved ~75% rep counting accuracy while detecting common form mistakes such as knee alignment, back curvature, and shoulder positioning, providing actionable feedback to improve safety.</li>
+          <li>Deployed on Hugging Face Spaces with an interactive interface, enabling peers to test remotely; collected usage data to refine detection models and enhance real-world reliability.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <h3>Resume Matcher Web App (Deployed) – June 2025</h3>
+        <div class="tech">Technologies: Python, NLP (spaCy), Gradio</div>
+        <ul>
+          <li>Developed an NLP-based tool matching resumes to job descriptions using semantic similarity and keyword overlap, reducing preliminary HR screening effort.</li>
+          <li>Tested on 50+ resumes and 10 job postings, achieving ~80% alignment with manual HR review and providing detailed scoring and ranking of candidates.</li>
+          <li>Deployed with a Gradio interface on Hugging Face Spaces, allowing recruiters to upload files and visualize semantic alignment for informed hiring decisions.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <h3>Customer Segmentation Dashboard – Feb 2025</h3>
+        <div class="tech">Technologies: Python, Pandas, Streamlit, K-Means Clustering</div>
+        <ul>
+          <li>Processed 1,000+ retail transactions to identify customer segments using RFM analysis and K-Means clustering, enabling data-driven marketing strategies.</li>
+          <li>Visualized three key customer segments highlighting purchasing behavior, retention likelihood, and revenue contribution to inform business decisions.</li>
+          <li>Presented findings in class and online demos, demonstrating practical applications of data analytics in retail operations.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <h3>NDCC Competition with Texas Instruments – Oct 2025</h3>
+        <div class="tech">Technologies: Python, Embedded C, MSPM0 LaunchPad, OpenCV, MediaPipe</div>
+        <ul>
+          <li>Collaborated on a hand gesture recognition system detecting classical dance mudras in real-time using computer vision and Mediapipe.</li>
+          <li>Integrated Python-based gesture detection with TI MSPM0 microcontroller via UART to provide real-time LED feedback, simulating interactive embedded product experience.</li>
+          <li>Worked in a team to design system architecture, implement ML-based gesture classification, and evaluate performance, emphasizing scalability and practical user feedback.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="skill-category">
+          <h3>Programming & Analytics</h3>
+          <p>Python, SQL, C, Java, Pandas, NumPy, scikit-learn, TensorFlow</p>
+        </div>
+        <div class="skill-category">
+          <h3>Product & Tools</h3>
+          <p>A/B Testing, Data Visualization, User Metrics, Product Strategy, Stakeholder Communication, JIRA, Confluence, Tableau, Power BI</p>
+        </div>
+        <div class="skill-category">
+          <h3>AI & ML / Embedded</h3>
+          <p>OpenCV, MediaPipe, spaCy, Gradio, TI MSPM0, Edge AI concepts</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Competitions -->
+    <section id="competitions">
+      <h2>Competitions & Hackathons</h2>
+      <div class="project">
+        <h3>National Design Challenge (NDCC) – Texas Instruments India</h3>
+        <ul>
+          <li>Collaborated on AI + embedded systems project integrating gesture recognition with TI MSPM0 microcontroller for interactive feedback.</li>
+          <li>Focused on problem-solving, system design, and real-time performance evaluation.</li>
+          <li>Enhanced teamwork and product-oriented decision making under competition constraints.</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Vishwaraj Saxena | <a href="mailto:vishwarajsaxena@gmail.com">Email</a> | <a href="https://www.linkedin.com/in/vishwarajsaxena/" target="_blank">LinkedIn</a> | <a href="https://github.com/vishwaraj25" target="_blank">GitHub</a></p>
+  </footer>
+
+</body>
+</html>
