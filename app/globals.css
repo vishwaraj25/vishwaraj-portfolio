@@ -1,0 +1,237 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", Times, serif;
+  --font-editorial: var(--font-fraunces), var(--font-newsreader), Georgia, "Times New Roman", Times, serif;
+}
+
+/*
+  ------------------------------------------------------------------
+  SCOPED THEME TOKENS
+  ------------------------------------------------------------------
+  Each route family owns its own palette. Tokens are set on <body>
+  via [data-theme] (see components/system/RouteTheme.tsx) and on the
+  page root as a fallback (.theme-*). Components should reference
+  var(--page-*) rather than hardcoding hexes so a case-study palette
+  can never leak into another route.
+
+    global      -> muted olive green + warm beige  (portfolio chrome)
+    swiggy      -> Swiggy orange + white           (case study 01)
+    expedition  -> deep crimson + warm white       (case study 02)
+*/
+
+:root,
+[data-theme="global"],
+.theme-global {
+  --page-bg: #ece5d6;          /* warm beige */
+  --page-bg-alt: #e2d9c4;      /* deeper beige panel */
+  --page-surface: #f4efe2;     /* raised cream card */
+  --page-fg: #282e20;          /* dark olive charcoal */
+  --page-fg-muted: #5c6350;    /* secondary text */
+  --page-border: #d0c6ac;      /* hairline */
+  --page-accent: #525e3c;      /* muted olive — primary */
+  --page-accent-hover: #414a2e;
+  --page-accent-fg: #f5f1e4;   /* text/icon on accent */
+  --page-highlight: #6b4a2a;   /* warm brown — emphasised text */
+  --page-selection-bg: #525e3c;
+  --page-selection-fg: #f5f1e4;
+}
+
+[data-theme="swiggy"],
+.theme-swiggy {
+  --page-bg: #ff5400;          /* Swiggy deep orange */
+  --page-bg-alt: #e64600;
+  --page-surface: rgba(255, 255, 255, 0.10);
+  --page-fg: #ffffff;
+  --page-fg-muted: rgba(255, 255, 255, 0.82);
+  --page-border: rgba(255, 255, 255, 0.24);
+  --page-accent: #ffffff;
+  --page-accent-hover: rgba(255, 255, 255, 0.9);
+  --page-accent-fg: #e64600;   /* orange ink on white chips */
+  --page-selection-bg: #ffffff;
+  --page-selection-fg: #ff5400;
+}
+
+[data-theme="duolingo"],
+.theme-duolingo {
+  --page-bg: #ffffff;          /* white */
+  --page-bg-alt: #f0f7ea;      /* pale green tint */
+  --page-surface: #f7fbf2;
+  --page-fg: #2b3a2b;          /* dark green-charcoal text */
+  --page-fg-muted: #5d6b58;
+  --page-border: #d7e8ca;
+  --page-accent: #58cc02;      /* Duolingo green */
+  --page-accent-hover: #4caf00;
+  --page-accent-fg: #ffffff;   /* white on green */
+  --page-highlight: #3c9a00;   /* darker green for emphasised text */
+  --page-selection-bg: #58cc02;
+  --page-selection-fg: #ffffff;
+}
+
+[data-theme="expedition"],
+.theme-expedition {
+  --page-bg: #8e1a2b;          /* rich ruby crimson */
+  --page-bg-alt: #6b0f1f;
+  --page-surface: rgba(255, 255, 255, 0.08);
+  --page-fg: #f7eeec;          /* warm white */
+  --page-fg-muted: rgba(247, 238, 236, 0.78);
+  --page-border: rgba(247, 238, 236, 0.20);
+  --page-accent: #f7eeec;
+  --page-accent-hover: rgba(247, 238, 236, 0.9);
+  --page-accent-fg: #8e1a2b;   /* crimson ink on white chips */
+  --page-selection-bg: #f7eeec;
+  --page-selection-fg: #8e1a2b;
+}
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+  }
+
+  body {
+    background: var(--page-bg);
+    color: var(--page-fg);
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  ::selection {
+    background: var(--page-selection-bg);
+    color: var(--page-selection-fg);
+  }
+}
+
+/*
+  ------------------------------------------------------------------
+  PREMIUM LAYER — texture, motion primitives, micro-interactions
+  ------------------------------------------------------------------
+*/
+
+/* Fine paper/screen grain over the whole page — barely-there, adds depth */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+[data-theme="duolingo"] body::before,
+[data-theme="expedition"] body::before,
+[data-theme="swiggy"] body::before { opacity: 0.05; }
+
+/* Thin scroll-progress bar (see components/system/ScrollProgress.tsx) */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform-origin: 0 50%;
+  background: var(--page-accent);
+  z-index: 60;
+}
+
+/* CSS mount entrances — cannot get stuck: with animations off, the
+   element simply renders in its natural (visible) state. */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes wordIn {
+  from { transform: translateY(110%); }
+  to   { transform: translateY(0); }
+}
+.rise { animation: riseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
+.word-in {
+  display: inline-block;
+  animation: wordIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+/* Reveal-on-scroll — pure CSS scroll-driven animation. No JS, so it can
+   never freeze in a stuck state. Browsers without scroll-timeline support
+   (or with reduced-motion) just render the element visible. */
+@keyframes revealIn {
+  from { opacity: 0.35; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: revealIn linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+
+/* Editorial link underline that draws in */
+.link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  padding-bottom: 2px;
+}
+.link-draw:hover { background-size: 100% 1px; }
+
+/* Premium button: subtle inset ring + arrow that slides on hover */
+.btn-premium {
+  position: relative;
+  isolation: isolate;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.25s ease, color 0.25s ease;
+}
+.btn-premium:hover { transform: translateY(-2px); }
+.btn-premium:active { transform: translateY(0); }
+.btn-premium svg { transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
+.btn-premium:hover svg { transform: translateX(3px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise, .word-in { animation: none; }
+  .js .reveal { opacity: 1; transform: none; filter: none; transition: none; }
+  .btn-premium, .btn-premium:hover { transform: none; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, 0.35);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 120, 120, 0.6);
+}
+
+/* Print styles for printable resume */
+@media print {
+  header, footer, .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .print-page {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+}
