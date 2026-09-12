@@ -40,7 +40,8 @@
 }
 
 [data-theme="swiggy"],
-.theme-swiggy {
+.theme-swiggy,
+body:has(.theme-swiggy) {
   --page-bg: #ff5400;          /* Swiggy deep orange */
   --page-bg-alt: #e64600;
   --page-surface: rgba(255, 255, 255, 0.10);
@@ -55,7 +56,8 @@
 }
 
 [data-theme="duolingo"],
-.theme-duolingo {
+.theme-duolingo,
+body:has(.theme-duolingo) {
   --page-bg: #ffffff;          /* white */
   --page-bg-alt: #f0f7ea;      /* pale green tint */
   --page-surface: #f7fbf2;
@@ -71,7 +73,8 @@
 }
 
 [data-theme="expedition"],
-.theme-expedition {
+.theme-expedition,
+body:has(.theme-expedition) {
   --page-bg: #171a19;
   --page-bg-alt: #22251f;
   --page-surface: #2c3028;
@@ -86,7 +89,8 @@
 }
 
 [data-theme="steam"],
-.theme-steam {
+.theme-steam,
+body:has(.theme-steam) {
   --page-bg: #07111d;
   --page-bg-alt: #0b1823;
   --page-surface: #142c40;
@@ -102,7 +106,8 @@
 }
 
 [data-theme="epf"],
-.theme-epf {
+.theme-epf,
+body:has(.theme-epf) {
   --page-bg: #f7f7f8;          /* off-white */
   --page-bg-alt: #ededf0;      /* silver */
   --page-surface: #ffffff;

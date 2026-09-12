@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Building2, Check, RotateCcw, ShieldAlert, User, X } from "lucide-react";
+import { ArrowLeft, Building2, Check, ShieldAlert, User, X } from "lucide-react";
 import s from "@/app/case-studies/epf-claims/epf.module.css";
 
 /* A walkthrough of the proposed flow. The member record below is fixed; what
@@ -171,21 +171,41 @@ export function ClaimReadyDemo() {
     focusHeading();
   }
 
+  /* Every control lives on the screen. The panel beside it is commentary,
+     never the way to drive the prototype. */
   function phoneBody() {
     if (stage === "setup") return (
       <>
-        <span className={s.appLabel}>{CLAIM_FORM[type].toUpperCase()}</span>
-        <div className={s.appCard}>
-          <p className={s.appCardTitle}>{CLAIM_LABEL[type]}</p>
-          <p>We check the conditions that cause most rejections before you file, not after.</p>
+        <span className={s.appLabel}>WHAT ARE YOU CLAIMING?</span>
+        <div className={s.appOptions} role="radiogroup" aria-label="Claim type">
+          {(Object.keys(CLAIM_LABEL) as ClaimType[]).map(v => (
+            <button key={v} type="button" role="radio" aria-checked={type === v}
+              className={`${s.appOption} ${type === v ? s.appOptionOn : ""}`}
+              onClick={() => setType(v)}>
+              <span>{CLAIM_LABEL[v]}</span>
+              <em>{CLAIM_FORM[v]}</em>
+            </button>
+          ))}
         </div>
-        <div className={s.appAmountBlock}>
-          <span className={s.appLabel}>ESTIMATED BALANCE</span>
-          <span className={s.appAmount}>₹4,86,200</span>
+        <span className={s.appLabel}>YOUR EMPLOYMENT</span>
+        <div className={s.appOptions} role="radiogroup" aria-label="Employment status">
+          {([["left", "I have left the job"], ["current", "I am still employed"]] as [Employment, string][]).map(([v, label]) => (
+            <button key={v} type="button" role="radio" aria-checked={employment === v}
+              className={`${s.appOption} ${employment === v ? s.appOptionOn : ""}`}
+              onClick={() => setEmployment(v)}>
+              <span>{label}</span>
+            </button>
+          ))}
         </div>
-        <div className={s.appButton}>Check my claim</div>
+        <div className={s.appActions}>
+          <p className={s.appHint} role="status">
+            {conditions.length} conditions apply{conditions.some(c => c.id === "exit") ? ", one of them your employer's" : ", none needing your employer"}
+          </p>
+          <button type="button" className={s.appPrimary} onClick={runCheck}>Check my claim</button>
+        </div>
       </>
     );
+
     if (stage === "checking") return (
       <>
         <span className={s.appLabel}>CHECKING {conditions.length} CONDITIONS</span>
@@ -199,12 +219,13 @@ export function ClaimReadyDemo() {
         ))}
       </>
     );
+
     if (stage === "fix" && active) return (
       <>
         <span className={`${s.statusPill} ${s.pillWait}`}>STEP {fixStep + 1} OF {active.steps.length}</span>
         <div className={s.appCard}>
           <p className={s.appCardTitle}>{active.steps[fixStep].title}</p>
-          <p>{active.label} · {active.owner === "employer" ? "employer action" : "your action"}</p>
+          <p>{active.label} · {active.owner === "employer" ? "your employer must act" : "you can do this"}</p>
         </div>
         {active.steps.map((st, i) => (
           <div key={st.title} className={s.fixRow}>
@@ -212,9 +233,13 @@ export function ClaimReadyDemo() {
             <span>{st.title}</span>
           </div>
         ))}
-        <div className={s.appButton}>{active.steps[fixStep].action}</div>
+        <div className={s.appActions}>
+          <button type="button" className={s.appPrimary} onClick={advanceFix}>{active.steps[fixStep].action}</button>
+          <button type="button" className={s.appSecondary} onClick={back}>Back to checklist</button>
+        </div>
       </>
     );
+
     if (stage === "filed") return (
       <>
         <span className={`${s.statusPill} ${s.pillPass}`}>SETTLED</span>
@@ -224,9 +249,12 @@ export function ClaimReadyDemo() {
         </div>
         <div className={s.appRowLine}><span>Filed</span><b>Day 0</b></div>
         <div className={s.appRowLine}><span>Settled</span><b>Day 5</b></div>
-        <div className={s.deadWall}>Blockers were cleared before filing, not discovered after.</div>
+        <div className={s.appActions}>
+          <button type="button" className={s.appPrimary} onClick={reset}>Start another claim</button>
+        </div>
       </>
     );
+
     return (
       <>
         <span className={`${s.statusPill} ${ready ? s.pillPass : s.pillFail}`}>
@@ -234,15 +262,31 @@ export function ClaimReadyDemo() {
         </span>
         <div className={`${s.appCard} ${ready ? s.appPass : s.appFail}`}>
           <p className={s.appCardTitle}>{ready ? "This claim should clear" : `${open.length} thing${open.length === 1 ? "" : "s"} would fail this claim`}</p>
-          <p>{ready ? "Every condition this claim depends on now matches." : "Each one names the exact field and who can fix it."}</p>
+          <p>{ready ? "Every condition this claim depends on now matches." : "Tap one to see how it gets fixed."}</p>
         </div>
-        {blockers.map(c => (
-          <div key={c.id} className={s.fixRow}>
-            <i className={resolved.includes(c.id) ? s.fixDone : s.fixOpen} aria-hidden="true" />
-            <span><b>{c.label}</b> · {resolved.includes(c.id) ? "cleared" : c.owner === "employer" ? "employer" : "you"}</span>
-          </div>
-        ))}
-        <div className={`${s.appButton} ${ready ? "" : s.appButtonMuted}`}>{ready ? "File claim" : "Resolve blockers first"}</div>
+        {conditions.map(c => {
+          const done = c.passes || resolved.includes(c.id);
+          if (done) return (
+            <div key={c.id} className={`${s.appCondition} ${s.appConditionDone}`}>
+              <Check size={13} aria-hidden="true" />
+              <span>{c.label}</span>
+              <em>{c.passes ? "matches" : "cleared"}</em>
+            </div>
+          );
+          return (
+            <button key={c.id} type="button" className={s.appCondition} onClick={() => openFix(c.id)}>
+              <ShieldAlert size={13} aria-hidden="true" />
+              <span>{c.label}</span>
+              <em>{c.owner === "employer" ? "employer" : "fix"}</em>
+            </button>
+          );
+        })}
+        <div className={s.appActions}>
+          <button type="button" className={s.appPrimary} disabled={!ready}
+            onClick={() => { setStage("filed"); focusHeading(); }}>
+            {ready ? "File claim" : "Resolve blockers first"}
+          </button>
+        </div>
       </>
     );
   }
@@ -304,33 +348,13 @@ export function ClaimReadyDemo() {
                     final settlement cannot move without it. Change the claim and watch the checklist
                     change with it.
                   </p>
-                  <form onSubmit={e => { e.preventDefault(); runCheck(); }} className={s.setupForm}>
-                    <fieldset>
-                      <legend>Claim type</legend>
-                      <div className={s.options}>
-                        {(Object.keys(CLAIM_LABEL) as ClaimType[]).map(v => (
-                          <label key={v}>
-                            <input type="radio" name="claimType" checked={type === v} onChange={() => setType(v)} />
-                            {CLAIM_LABEL[v]}
-                          </label>
-                        ))}
-                      </div>
-                    </fieldset>
-                    <fieldset>
-                      <legend>Your employment</legend>
-                      <div className={s.options}>
-                        <label><input type="radio" name="employment" checked={employment === "left"} onChange={() => setEmployment("left")} />I have left the job</label>
-                        <label><input type="radio" name="employment" checked={employment === "current"} onChange={() => setEmployment("current")} />I am still employed</label>
-                      </div>
-                    </fieldset>
-                    <p className={s.setupSummary} role="status">
-                      {CLAIM_FORM[type]} depends on <b>{conditions.length} conditions</b>
-                      {conditions.some(c => c.id === "exit")
-                        ? ", including your employer recording a date of exit."
-                        : ". Your exit date is not required, so your employer is not in the way."}
-                    </p>
-                    <button className={s.primaryButton} type="submit">Run readiness check <ArrowRight size={17} /></button>
-                  </form>
+                  <p className={s.setupSummary} role="status">
+                    {CLAIM_FORM[type]} depends on <b>{conditions.length} conditions</b>
+                    {conditions.some(c => c.id === "exit")
+                      ? ", including your employer recording a date of exit."
+                      : ". Your exit date is not required, so your employer is not in the way."}
+                  </p>
+                  <p className={s.panelCue}>Pick a claim on the phone, then tap Check my claim.</p>
                 </>
               )}
 
@@ -369,22 +393,18 @@ export function ClaimReadyDemo() {
                           {!c.passes && (
                             <div className={s.checkAction}>
                               <p>{resolved.includes(c.id) ? "Cleared in this walkthrough." : c.consequence}</p>
-                              <p className={s.checkFix}><b>Why it is checked:</b> {c.why}</p>
-                              {!resolved.includes(c.id) && (
-                                <button type="button" className={s.fixButton} onClick={() => openFix(c.id)}>
-                                  {c.owner === "employer" ? <Building2 size={14} aria-hidden="true" /> : <User size={14} aria-hidden="true" />}
-                                  Fix this
-                                </button>
-                              )}
+                              <p className={s.checkFix}>
+                                <b>{c.owner === "employer" ? <Building2 size={13} aria-hidden="true" /> : <User size={13} aria-hidden="true" />} Why it is checked:</b> {c.why}
+                              </p>
                             </div>
                           )}
                         </li>
                       );
                     })}
                   </ul>
-                  {ready
-                    ? <button className={s.primaryButton} onClick={() => { setStage("filed"); focusHeading(); }}>File the claim <ArrowRight size={17} /></button>
-                    : <p className={s.setupSummary}>Open a blocker to walk the correction path it routes to.</p>}
+                  <p className={s.panelCue}>
+                    {ready ? "Tap File claim on the phone." : "Tap a blocker on the phone to walk its correction path."}
+                  </p>
                 </>
               )}
 
@@ -403,9 +423,7 @@ export function ClaimReadyDemo() {
                       </li>
                     ))}
                   </ol>
-                  <button className={s.primaryButton} onClick={advanceFix}>
-                    {active.steps[fixStep].action} <ArrowRight size={17} />
-                  </button>
+                  <p className={s.panelCue}>Tap {active.steps[fixStep].action} on the phone.</p>
                   {active.owner === "employer" && fixStep === 1 && (
                     <p className={s.source}>
                       EPFO allows a member to record their own date of exit two months after leaving.
@@ -435,7 +453,7 @@ export function ClaimReadyDemo() {
                     The two paths illustrate sequence, not measured durations. No service level is
                     claimed.
                   </p>
-                  <button className={s.primaryButton} onClick={reset}><RotateCcw size={17} /> Try another claim type</button>
+                  <p className={s.panelCue}>Tap Start another claim on the phone to try a different claim type.</p>
                 </>
               )}
             </div>
