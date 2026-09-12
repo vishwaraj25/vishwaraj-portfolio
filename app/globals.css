@@ -185,12 +185,15 @@ body::before {
   animation: wordIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
-/* Reveal-on-scroll — pure CSS scroll-driven animation. No JS, so it can
-   never freeze in a stuck state. Browsers without scroll-timeline support
-   (or with reduced-motion) just render the element visible. */
+/* Reveal-on-scroll — pure CSS scroll-driven animation.
+   Deliberately never animates opacity. If a page ever puts this inside an
+   `overflow: clip` ancestor, `view()` cannot resolve a scroll container and
+   the timeline goes inactive, pinning the animation to its first keyframe.
+   Transform-only means the worst case is content that does not slide,
+   never content that cannot be read. */
 @keyframes revealIn {
-  from { opacity: 0.35; transform: translateY(20px); }
-  to   { opacity: 1; transform: none; }
+  from { transform: translateY(20px); }
+  to   { transform: none; }
 }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
