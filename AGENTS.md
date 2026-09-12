@@ -48,3 +48,28 @@ For substantial changes:
 3. Implement in focused increments.
 4. Review desktop and mobile behavior.
 5. Verify the implementation before considering the task complete.
+
+## Evidence & Metrics
+
+- Product claims and decisions should be supported by quantitative evidence wherever appropriate.
+- Every number shown in a case study must be defensible and traceable to its source or calculation.
+- Clearly distinguish measured results, public data, calculated metrics, estimates, hypotheses, and targets.
+- Never present modeled or estimated impact as an actual measured outcome.
+- Never invent numbers to make a case study appear data-driven.
+- For small-sample user research, prefer absolute counts such as "3 of 5 users" over potentially misleading percentages.
+## Animation skills
+
+For Steam case-study animation work, use only the narrowest relevant skill:
+
+- `.agents/skills/animation-systems/SKILL.md`
+  - use for UI motion, hover states, transitions, easing, timing, accessibility
+
+- `.agents/skills/cinematic-scroll-storytelling/SKILL.md`
+  - use for scroll-driven storytelling, parallax, pinned scenes, scrubbed transitions
+
+- `.agents/skills/scroll-world-storytelling/SKILL.md`
+  - use only when building one connected scroll world or 3D narrative system
+
+Do not load all animation skills by default.
+Do not inspect unrelated skills unless required.
+Prefer existing project libraries before adding dependencies.

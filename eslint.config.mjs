@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored skill assets (e.g. bundled three.js demos) — not app source.
+    ".agents/**",
   ]),
 ]);
 
