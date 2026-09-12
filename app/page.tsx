@@ -35,6 +35,21 @@ const CASE_STUDIES = [
     ],
     cta: "Read the Steam discovery study",
   },
+  {
+    index: "03",
+    slug: "/case-studies/epf-claims",
+    kicker: "EPF Claims / Public Infrastructure Product",
+    accent: "#ffb020",
+    title: "One in five people are told no when asking for their own money",
+    question: "How might a member know a claim will fail before they file it?",
+    dek: "An India-specific breakdown of why 1.74 crore provident fund claims were rejected in a single year, and why almost none of it was a decision about eligibility.",
+    metrics: [
+      { k: "Claims filed", v: "7.96 cr" },
+      { k: "Rejected", v: "1.74 cr" },
+      { k: "Rejection rate", v: "~22%" },
+    ],
+    cta: "Read the EPF claims breakdown",
+  },
 ];
 
 const PRINCIPLES = [

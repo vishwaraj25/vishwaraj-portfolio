@@ -4,7 +4,7 @@
  * (Header / Footer) so navigation, homepage and case studies stay in
  * their own visual lane.
  */
-export type ThemeName = "global" | "swiggy" | "expedition" | "duolingo" | "steam";
+export type ThemeName = "global" | "swiggy" | "expedition" | "duolingo" | "steam" | "epf";
 
 export function isCaseStudyRoute(pathname: string): boolean {
   return pathname === "/case-studies" || pathname.startsWith("/case-studies/");
@@ -12,6 +12,7 @@ export function isCaseStudyRoute(pathname: string): boolean {
 
 export function getThemeName(pathname: string): ThemeName {
   if (pathname.startsWith("/case-studies/steam-discovery")) return "steam";
+  if (pathname.startsWith("/case-studies/epf-claims")) return "epf";
   if (pathname.startsWith("/case-studies/swiggy-instamart")) return "swiggy";
   if (pathname.startsWith("/case-studies/expedition-33")) return "expedition";
   if (pathname.startsWith("/case-studies/duolingo")) return "duolingo";
@@ -137,6 +138,24 @@ const MAP: Record<ThemeName, ChromeTheme> = {
     footerRule: "border-[#1f3a52]",
     footerFaint: "text-[#8fb8d8]",
     footerChip: "bg-[#0b1823] text-[#dbe9f4] border border-[#28445d]",
+  },
+  epf: {
+    barScrolled: "bg-[#100d0a] border-b border-[#2e251d] text-[#f4eee6]",
+    barTop: "bg-[#100d0a] border-b border-[#2e251d] text-[#f4eee6]",
+    brand: "text-[#f9f5ef]",
+    tag: "text-[#b3a595]",
+    dot: "bg-[#ffb020]",
+    navLink: "text-[#b3a595] hover:text-[#f9f5ef]",
+    activeLink: "text-[#ffb020]",
+    divider: "bg-[#2e251d]",
+    pill: "bg-[#171310] text-[#f4eee6] border border-[#3a2f24]",
+    dropdown: "bg-[#171310] border-[#3a2f24] text-[#f4eee6]",
+    dropdownItemHover: "hover:bg-[#211b15]",
+    drawer: "bg-[#100d0a] text-[#f4eee6]",
+    footerBg: "bg-[#100d0a] text-[#f4eee6]",
+    footerRule: "border-[#2e251d]",
+    footerFaint: "text-[#b3a595]",
+    footerChip: "bg-[#171310] text-[#f4eee6] border border-[#3a2f24]",
   },
   global: GLOBAL,
   swiggy: SWIGGY,

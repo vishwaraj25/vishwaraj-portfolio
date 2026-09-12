@@ -101,6 +101,22 @@
   --page-selection-fg: #07111d;
 }
 
+[data-theme="epf"],
+.theme-epf {
+  --page-bg: #100d0a;          /* warm ink, deliberately not sarkari blue */
+  --page-bg-alt: #171310;
+  --page-surface: #211b15;
+  --page-fg: #f4eee6;
+  --page-fg-muted: #b3a595;
+  --page-border: #2e251d;
+  --page-accent: #ffb020;      /* amber */
+  --page-accent-hover: #ffc954;
+  --page-accent-fg: #100d0a;
+  --page-highlight: #ffb020;
+  --page-selection-bg: #ffb020;
+  --page-selection-fg: #100d0a;
+}
+
 @layer base {
   html, body {
     margin: 0;
