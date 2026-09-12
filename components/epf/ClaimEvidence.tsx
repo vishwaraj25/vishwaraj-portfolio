@@ -81,17 +81,27 @@ const years = [
   { year: "FY2024-25", rate: 22, label: "~22%", note: "174 lakh of 796 lakh claims" },
 ];
 
-function TrendRow({ item, index, progress, active }: { item: typeof years[number]; index: number; progress: MotionValue<number>; active: boolean }) {
-  const start = 0.05 + index * 0.16;
-  const scaleX = useTransform(progress, [start, start + 0.3], [0, item.rate / 29]);
+/* Bars sit on a fixed 0–35% axis, not scaled to the peak: peak-scaling would
+   exaggerate a 7-point fall into a dramatic one, which works against what the
+   data actually says. */
+const AXIS_MAX = 35;
+
+function TrendRow({ item, progress, active }: { item: typeof years[number]; progress: MotionValue<number>; active: boolean }) {
+  /* All rows share one range so they grow in unison. Staggering them meant
+     that mid-scroll a 22% bar could render empty beside a filled 29% bar,
+     which misstates the comparison the chart exists to make. */
+  const scaleX = useTransform(progress, [0.05, 0.4], [0, item.rate / AXIS_MAX]);
   return (
-    <div className={s.trendRow}>
-      <span>{item.year}</span>
-      <div className={s.trendTrack}>
-        <motion.div className={s.trendFill} style={{ scaleX: active ? scaleX : item.rate / 29 }} />
-      </div>
-      <b>{item.label}</b>
-    </div>
+    <tr className={s.trendRow}>
+      <th scope="row">{item.year}</th>
+      <td className={s.trendBarCell}>
+        {/* Visual only; the rate is announced from the cell beside it. */}
+        <span className={s.trendTrack} aria-hidden="true">
+          <motion.span className={s.trendFill} style={{ scaleX: active ? scaleX : item.rate / AXIS_MAX }} />
+        </span>
+      </td>
+      <td className={s.trendValue}>{item.label}</td>
+    </tr>
   );
 }
 
@@ -101,14 +111,22 @@ export function RejectionTrend() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end center"] });
   return (
     <div ref={ref} className={`${s.trendStory} ${s.reveal}`}>
-      <div role="table" aria-label="EPFO claim rejection rate by financial year">
-        {years.map((item, index) => (
-          <TrendRow key={item.year} item={item} index={index} progress={scrollYProgress} active={active} />
-        ))}
-      </div>
+      <table className={s.trendTable}>
+        <caption className={s.srOnly}>EPFO claim rejection rate by financial year</caption>
+        <thead className={s.srOnly}>
+          <tr><th scope="col">Financial year</th><th scope="col">Relative scale</th><th scope="col">Rejection rate</th></tr>
+        </thead>
+        <tbody>
+          {years.map(item => (
+            <TrendRow key={item.year} item={item} progress={scrollYProgress} active={active} />
+          ))}
+        </tbody>
+      </table>
       <p className={s.trendNote}>
-        Bars are scaled against the FY2021-22 peak. The rate is improving, but on a larger base:
-        FY2024-25 saw more claims filed and more claims rejected in absolute terms than FY2023-24.
+        Bars run on a fixed 0–35% axis, so the fall is shown at its real size. It is a genuine
+        improvement and a modest one: the rate dropped about seven points across four years, while
+        claim volume grew enough that FY2024-25 still rejected more people in absolute terms than
+        FY2023-24.
       </p>
       <p className={s.source}>
         EPFO Annual Report figures as reported. FY2024-25 and FY2023-24 percentages are calculated

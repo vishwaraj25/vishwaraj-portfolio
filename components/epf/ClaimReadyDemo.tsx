@@ -176,7 +176,7 @@ export function ClaimReadyDemo() {
       <>
         <span className={s.appLabel}>{CLAIM_FORM[type].toUpperCase()}</span>
         <div className={s.appCard}>
-          <h4>{CLAIM_LABEL[type]}</h4>
+          <p className={s.appCardTitle}>{CLAIM_LABEL[type]}</p>
           <p>We check the conditions that cause most rejections before you file, not after.</p>
         </div>
         <div className={s.appAmountBlock}>
@@ -203,7 +203,7 @@ export function ClaimReadyDemo() {
       <>
         <span className={`${s.statusPill} ${s.pillWait}`}>STEP {fixStep + 1} OF {active.steps.length}</span>
         <div className={s.appCard}>
-          <h4>{active.steps[fixStep].title}</h4>
+          <p className={s.appCardTitle}>{active.steps[fixStep].title}</p>
           <p>{active.label} · {active.owner === "employer" ? "employer action" : "your action"}</p>
         </div>
         {active.steps.map((st, i) => (
@@ -219,7 +219,7 @@ export function ClaimReadyDemo() {
       <>
         <span className={`${s.statusPill} ${s.pillPass}`}>SETTLED</span>
         <div className={`${s.appCard} ${s.appPass}`}>
-          <h4>₹4,86,200 credited</h4>
+          <p className={s.appCardTitle}>₹4,86,200 credited</p>
           <p>Cleared on the first attempt. No rejection, no grievance, no refiling.</p>
         </div>
         <div className={s.appRowLine}><span>Filed</span><b>Day 0</b></div>
@@ -233,7 +233,7 @@ export function ClaimReadyDemo() {
           {ready ? "READY TO FILE" : `${open.length} BLOCKER${open.length === 1 ? "" : "S"}`}
         </span>
         <div className={`${s.appCard} ${ready ? s.appPass : s.appFail}`}>
-          <h4>{ready ? "This claim should clear" : `${open.length} thing${open.length === 1 ? "" : "s"} would fail this claim`}</h4>
+          <p className={s.appCardTitle}>{ready ? "This claim should clear" : `${open.length} thing${open.length === 1 ? "" : "s"} would fail this claim`}</p>
           <p>{ready ? "Every condition this claim depends on now matches." : "Each one names the exact field and who can fix it."}</p>
         </div>
         {blockers.map(c => (

@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 /* Conditions EPFO has publicly identified as frequent causes of rejection.
    Presented as a list because no reliable published split by cause exists. */
 const MISMATCHES = [
-  { id: "name", label: "Name", onFile: "Vishwaraj Saxena", elsewhere: "Vishwaraj A Saxena (Aadhaar)" },
-  { id: "dob", label: "Date of birth", onFile: "14 Aug 1998", elsewhere: "14 Aug 1997 (EPF record)" },
-  { id: "bank", label: "Bank account", onFile: "Added", elsewhere: "Not verified by employer" },
-  { id: "uan", label: "UAN", onFile: "Two UANs found", elsewhere: "Not merged" },
-  { id: "exit", label: "Date of exit", onFile: "Blank", elsewhere: "Employer has not updated" },
+  { id: "name", label: "Name", state: "Aadhaar reads Vishwaraj A Saxena. The EPF record reads Vishwaraj Saxena." },
+  { id: "dob", label: "Date of birth", state: "Aadhaar says 14 Aug 1998. The EPF record says 14 Aug 1997." },
+  { id: "bank", label: "Bank account", state: "The account is added, but your employer has never verified it." },
+  { id: "uan", label: "UAN", state: "Two UANs exist under your name and have not been merged." },
+  { id: "exit", label: "Date of exit", state: "Your previous employer has not recorded the day you left." },
 ];
 
 export default function EpfClaimsPage() {
@@ -36,7 +36,17 @@ export default function EpfClaimsPage() {
           In FY2024-25 members filed about <b>7.96 crore</b> EPF claims. About <b>1.74 crore</b> were
           rejected. Almost none of that is a decision about whether you are owed the money.
         </p>
-        <ClaimField />
+        <figure className={s.claimFigure}>
+          <figcaption className={s.claimLegend}>
+            <span><i className={s.legendRejected} aria-hidden="true" /> Rejected claim</span>
+            <span><i className={s.legendSettled} aria-hidden="true" /> Settled claim</span>
+          </figcaption>
+          <ClaimField />
+          <p className={s.claimCaption}>
+            Each tile stands for a share of the 7.96 crore claims filed in FY2024-25, not a single
+            claim. Two tiles in every nine are black, matching the reported rejection rate.
+          </p>
+        </figure>
         <div className={s.heroStat}>
           <div><strong>7.96 cr</strong><span>claims filed</span></div>
           <div><strong className={s.coral}>1.74 cr</strong><span>rejected</span></div>
@@ -81,8 +91,8 @@ export default function EpfClaimsPage() {
 
         <p className={s.body}>
           EPFO has publicly attributed a significant share of rejections to small record errors such
-          as name mismatches and unlinked Aadhaar. Tick any one condition below to see what happens
-          to the claim.
+          as name mismatches and unlinked Aadhaar. The claim below currently has a clean record and
+          would be paid. Try breaking it.
         </p>
 
         <div className={`${s.recordCheck} ${s.glass}`}>
@@ -91,19 +101,17 @@ export default function EpfClaimsPage() {
             <b>₹4,86,200</b>
           </div>
           <p className={s.recordHint}>
-            Each row is a condition EPFO checks. A single disagreement is enough.
+            Below are five problems a real member record can have. Tick any one to apply it to this
+            claim and see the outcome change. One is enough.
           </p>
           <fieldset className={s.recordGrid}>
-            <legend className={s.srOnly}>Introduce a record mismatch to see the claim outcome</legend>
+            <legend className={s.srOnly}>Apply a record problem to this claim to see the outcome change</legend>
             {MISMATCHES.map(item => (
               <label className={s.recordRow} key={item.id}>
                 <input type="checkbox" name={`mismatch-${item.id}`} />
                 <span>
                   <span className={s.recordLabel}>{item.label}</span>
-                  <span className={s.recordValues}>
-                    On claim <em>{item.onFile}</em><br />
-                    On record <em>{item.elsewhere}</em>
-                  </span>
+                  <span className={s.recordValues}>{item.state}</span>
                 </span>
               </label>
             ))}
@@ -172,7 +180,7 @@ export default function EpfClaimsPage() {
                 <div className={s.appBody}>
                   <span className={s.appLabel}>CLAIM TYPE</span>
                   <div className={s.appCard}>
-                    <h4>Form 19 · Final PF settlement</h4>
+                    <p className={s.appCardTitle}>Form 19 · Final PF settlement</p>
                     <p>Your claim will be processed by the field office handling your account.</p>
                   </div>
                   <div className={s.appRowLine}><span>Balance</span><b>₹4,86,200</b></div>
@@ -194,7 +202,7 @@ export default function EpfClaimsPage() {
                 <div className={s.appBody}>
                   <span className={`${s.statusPill} ${s.pillFail}`}>REJECTED</span>
                   <div className={`${s.appCard} ${s.appFail}`}>
-                    <h4>Claim rejected</h4>
+                    <p className={s.appCardTitle}>Claim rejected</p>
                     <p>Reason: Member data not matching. Please apply afresh.</p>
                   </div>
                   <div className={s.appRowLine}><span>Filed</span><b>Day 0</b></div>
@@ -216,7 +224,7 @@ export default function EpfClaimsPage() {
                 <div className={s.appBody}>
                   <span className={`${s.statusPill} ${s.pillWait}`}>UNDER REVIEW</span>
                   <div className={s.appCard}>
-                    <h4>Grievance registered</h4>
+                    <p className={s.appCardTitle}>Grievance registered</p>
                     <p>Typical resolution takes about 15 to 30 days.</p>
                   </div>
                   <div className={s.fixRow}><i className={s.fixOpen} aria-hidden="true" /><span>Identify which field disagreed</span></div>
