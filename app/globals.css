@@ -103,18 +103,18 @@
 
 [data-theme="epf"],
 .theme-epf {
-  --page-bg: #100d0a;          /* warm ink, deliberately not sarkari blue */
-  --page-bg-alt: #171310;
-  --page-surface: #211b15;
-  --page-fg: #f4eee6;
-  --page-fg-muted: #b3a595;
-  --page-border: #2e251d;
-  --page-accent: #ffb020;      /* amber */
-  --page-accent-hover: #ffc954;
-  --page-accent-fg: #100d0a;
-  --page-highlight: #ffb020;
-  --page-selection-bg: #ffb020;
-  --page-selection-fg: #100d0a;
+  --page-bg: #f7f7f8;          /* off-white */
+  --page-bg-alt: #ededf0;      /* silver */
+  --page-surface: #ffffff;
+  --page-fg: #0a0a0b;          /* black */
+  --page-fg-muted: #5c5c60;
+  --page-border: #d6d6db;
+  --page-accent: #0a0a0b;
+  --page-accent-hover: #2c2c30;
+  --page-accent-fg: #ffffff;
+  --page-highlight: #0a0a0b;
+  --page-selection-bg: #0a0a0b;
+  --page-selection-fg: #f7f7f8;
 }
 
 @layer base {

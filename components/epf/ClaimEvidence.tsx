@@ -100,7 +100,7 @@ export function RejectionTrend() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end center"] });
   return (
-    <div ref={ref} className={s.trendStory}>
+    <div ref={ref} className={`${s.trendStory} ${s.reveal}`}>
       <div role="table" aria-label="EPFO claim rejection rate by financial year">
         {years.map((item, index) => (
           <TrendRow key={item.year} item={item} index={index} progress={scrollYProgress} active={active} />

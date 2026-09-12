@@ -120,7 +120,7 @@ export function ClaimReadyDemo() {
   const openCount = BLOCKERS.length - resolved.length;
 
   return (
-    <div className={s.prototype}>
+    <div className={`${s.prototype} ${s.glass}`}>
       <div className={s.prototypeHead}>
         <p className={s.eyebrow}>Concept prototype · Claim Ready</p>
         {phase !== "idle" && (
@@ -134,6 +134,7 @@ export function ClaimReadyDemo() {
         {/* Device */}
         <div className={s.phone}>
           <div className={s.phoneScreen}>
+              <span className={s.island} aria-hidden="true" />
             <div className={s.statusBar}>
               <span>9:41</span>
               <span className={s.statusIcons}><b /><b /><i /></span>

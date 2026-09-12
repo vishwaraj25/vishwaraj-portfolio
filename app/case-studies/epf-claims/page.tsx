@@ -63,7 +63,7 @@ export default function EpfClaimsPage() {
           </p>
         </div>
         <RejectionTrend />
-        <div className={s.logic} aria-label="The problem in one line">
+        <div className={`${s.logic} ${s.glass} ${s.reveal}`} aria-label="The problem in one line">
           <span>Records held in four places</span><ArrowRight aria-hidden="true" />
           <span>Any one of them disagrees</span><ArrowRight aria-hidden="true" />
           <strong>The claim fails, weeks later</strong>
@@ -85,7 +85,7 @@ export default function EpfClaimsPage() {
           to the claim.
         </p>
 
-        <div className={s.recordCheck}>
+        <div className={`${s.recordCheck} ${s.glass}`}>
           <div className={s.recordBar}>
             <span>MEMBER RECORD · FORM 19 FINAL SETTLEMENT</span>
             <b>₹4,86,200</b>
@@ -129,7 +129,7 @@ export default function EpfClaimsPage() {
           </div>
         </div>
 
-        <div className={s.causeList}>
+        <div className={`${s.causeList} ${s.reveal}`}>
           {[
             ["01", "A name spelled differently across Aadhaar, PAN and the EPF record. An expanded initial or an extra middle name is enough."],
             ["02", "A date of birth that disagrees between records. This is a common cause of pension claim rejection specifically."],
@@ -141,7 +141,7 @@ export default function EpfClaimsPage() {
           ))}
         </div>
 
-        <p className={s.caveat}>
+        <p className={`${s.caveat} ${s.glass}`}>
           EPFO has identified these as frequent causes. I could not find a reliable published
           breakdown of rejections by cause, so no split is claimed here. The list is qualitative.
         </p>
@@ -161,11 +161,12 @@ export default function EpfClaimsPage() {
           </p>
         </div>
 
-        <div className={s.phoneRow}>
+        <div className={`${s.phoneRow} ${s.reveal}`}>
           <div className={s.phoneStep}>
             <div className={s.stepMeta}><span>01</span><strong>You file</strong></div>
             <div className={s.phone}>
               <div className={s.phoneScreen}>
+              <span className={s.island} aria-hidden="true" />
                 <div className={s.statusBar}><span>9:41</span><span className={s.statusIcons}><b /><b /><i /></span></div>
                 <div className={s.appBar}><span className={s.appMark} aria-hidden="true" /><span>Member Portal</span></div>
                 <div className={s.appBody}>
@@ -187,6 +188,7 @@ export default function EpfClaimsPage() {
             <div className={s.stepMeta}><span>02</span><strong>Weeks pass, then no</strong></div>
             <div className={s.phone}>
               <div className={s.phoneScreen}>
+              <span className={s.island} aria-hidden="true" />
                 <div className={s.statusBar}><span>9:41</span><span className={s.statusIcons}><b /><b /><i /></span></div>
                 <div className={s.appBar}><span className={s.appMark} aria-hidden="true" /><span>Member Portal</span></div>
                 <div className={s.appBody}>
@@ -208,6 +210,7 @@ export default function EpfClaimsPage() {
             <div className={s.stepMeta}><span>03</span><strong>The loop</strong></div>
             <div className={s.phone}>
               <div className={s.phoneScreen}>
+              <span className={s.island} aria-hidden="true" />
                 <div className={s.statusBar}><span>9:41</span><span className={s.statusIcons}><b /><b /><i /></span></div>
                 <div className={s.appBar}><span className={s.appMark} aria-hidden="true" /><span>Grievance</span></div>
                 <div className={s.appBody}>
@@ -234,7 +237,7 @@ export default function EpfClaimsPage() {
 
       <section className={s.opportunity} aria-labelledby="opportunity-title">
         <h2 id="opportunity-title">Why it matters</h2>
-        <dl className={s.stakeholders}>
+        <dl className={`${s.stakeholders} ${s.reveal}`}>
           <div><dt>Member</dt><dd>Often needs the money for the reason they left the job. A rejection costs weeks and does not say what to fix.</dd></div>
           <div><dt>Employer</dt><dd>Holds a field the member cannot edit. Silence on an exit date blocks a settlement indefinitely.</dd></div>
           <div><dt>EPFO</dt><dd>Spends adjudication capacity and grievance capacity on the same avoidable errors, twice per member.</dd></div>
@@ -261,7 +264,7 @@ export default function EpfClaimsPage() {
       <section className={s.analysis} aria-labelledby="logic-title">
         <p className={s.eyebrow}>Behind the proposed experience</p>
         <h2 id="logic-title">The same checks, run earlier and explained.</h2>
-        <ol className={s.rankingFlow}>
+        <ol className={`${s.rankingFlow} ${s.reveal}`}>
           <li><h3>Read the record</h3><p>Pull the fields a settlement already depends on: name, date of birth, bank mandate, UAN state and employer service history.</p></li>
           <li><h3>Compare, do not judge</h3><p>Flag disagreement between sources rather than deciding eligibility. A mismatch is a data state, not a verdict on the member.</p></li>
           <li><h3>Name the field</h3><p>Return the specific field and both values. &ldquo;Member data not matching&rdquo; is replaced by &ldquo;Aadhaar has a middle initial your EPF record does not.&rdquo;</p></li>
@@ -276,7 +279,7 @@ export default function EpfClaimsPage() {
 
       <section className={s.analysis} aria-labelledby="hypothesis-title">
         <h2 id="hypothesis-title">Why this may work</h2>
-        <div className={s.analyticColumns}>
+        <div className={`${s.analyticColumns} ${s.reveal}`}>
           <div>
             <h3>The failure is knowable before the wait.</h3>
             <p>Most of these conditions are checkable at submission time. If that is true, the rejection is a timing choice, not an information limit.</p>
@@ -292,16 +295,16 @@ export default function EpfClaimsPage() {
       <section className={s.analysis} aria-labelledby="experiment-title">
         <p className={s.eyebrow}>Experiment design</p>
         <h2 id="experiment-title">Do more claims clear on the first attempt?</h2>
-        <div className={s.analyticColumns}>
+        <div className={`${s.analyticColumns} ${s.reveal}`}>
           <div><h3>Control</h3><p>Current submission flow, with the outcome communicated after adjudication.</p></div>
           <div><h3>Treatment</h3><p>Readiness check before submission, with named fields and owner routing. Assignment held stable at member level.</p></div>
         </div>
-        <div className={s.metricDefinition}>
+        <div className={`${s.metricDefinition} ${s.glass}`}>
           <h3>Primary: First-Pass Claim Success Rate</h3>
           <p>The share of filed claims settled without a rejection, a return for correction, or a grievance, measured within a fixed window from first submission.</p>
           <p>This deliberately counts the member&apos;s experience of the whole attempt rather than the outcome of any single submission, so a flow that merely splits one rejection into two filings does not look like an improvement.</p>
         </div>
-        <dl className={s.stakeholders}>
+        <dl className={`${s.stakeholders} ${s.reveal}`}>
           <div><dt>Secondary metrics</dt><dd>Time from first submission to settlement, share of blockers resolved before filing, employer exit-date turnaround, and grievances filed per settled claim.</dd></div>
           <div><dt>Guardrails</dt><dd>Total settlement volume, abandonment at the new gate, time added before submission, and equity of outcomes across members who need employer action versus those who do not.</dd></div>
           <div><dt>Readout</dt><dd>Compare over a predefined window with uncertainty intervals. Split by whether a blocker was member-owned or employer-owned, since the second is outside the member&apos;s control.</dd></div>
@@ -310,7 +313,7 @@ export default function EpfClaimsPage() {
 
       <section className={s.analysis} aria-labelledby="tradeoffs-title">
         <h2 id="tradeoffs-title">The trade-offs are part of the product.</h2>
-        <div className={s.analyticColumns}>
+        <div className={`${s.analyticColumns} ${s.reveal}`}>
           <div>
             <h3>A gate can become a new wall.</h3>
             <p>Blocking submission until records agree helps only if the corrections are genuinely reachable. If an employer never responds, the member has been stopped earlier rather than helped.</p>
