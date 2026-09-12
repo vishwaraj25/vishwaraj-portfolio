@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Eye, Shield, Sword, MapPin, Layers } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 interface GameScreenshot {
   id: string;
@@ -110,16 +110,16 @@ export function GameGallery() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="relative aspect-video w-full"
+            className="relative w-full"
           >
             <img
               src={selectedImage.src}
               alt={selectedImage.title}
-              className="w-full h-full object-cover"
+              className="w-full aspect-video object-cover"
             />
             {/* Overlay Caption Bar */}
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 sm:p-8 space-y-2">
-              <div className="flex items-center gap-2">
+            <div className="bg-black/30 p-4 sm:p-6 space-y-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xs font-mono uppercase font-bold px-2.5 py-0.5 rounded-full bg-white text-[var(--page-accent-fg)]">
                   {selectedImage.category}
                 </span>
@@ -145,6 +145,7 @@ export function GameGallery() {
             <motion.button
               key={shot.id}
               type="button"
+              aria-pressed={isSelected}
               whileHover={{ y: -2, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setSelectedImage(shot)}

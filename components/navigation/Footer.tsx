@@ -3,12 +3,25 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight } from "lucide-react";
-import { getChromeTheme } from "@/lib/theme";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { getChromeTheme, getThemeName, isCaseStudyRoute } from "@/lib/theme";
 
 export function Footer() {
   const pathname = usePathname();
   const c = getChromeTheme(pathname);
+
+  if (isCaseStudyRoute(pathname)) {
+    return (
+      <footer className={`border-t px-6 py-8 sm:px-8 ${c.footerRule} ${c.footerBg} ${getThemeName(pathname) === "expedition" ? "font-editorial" : "font-sans"}`}>
+        <nav aria-label="Case study navigation" className="mx-auto max-w-6xl">
+          <Link href="/#work" className="inline-flex items-center gap-2 text-sm underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4">
+            <ArrowLeft aria-hidden="true" className="h-4 w-4" />
+            Back to Work
+          </Link>
+        </nav>
+      </footer>
+    );
+  }
 
   return (
     <footer className={`border-t ${c.footerRule} ${c.footerBg} py-16 px-6 sm:px-8`}>
@@ -27,18 +40,9 @@ export function Footer() {
           {/* Quick links */}
           <div className="md:col-span-4 space-y-3">
             <div className={`text-xs font-mono uppercase tracking-widest font-semibold ${c.footerFaint}`}>
-              Selected Breakdowns
+              Selected Breakdown
             </div>
             <ul className="space-y-3 text-sm font-sans">
-              <li>
-                <Link
-                  href="/case-studies/swiggy-instamart"
-                  className="group block"
-                >
-                  <span className="font-medium group-hover:underline">Swiggy Instamart</span>
-                  <span className={`block text-xs font-mono mt-0.5 ${c.footerFaint}`}>Logistics</span>
-                </Link>
-              </li>
               <li>
                 <Link
                   href="/case-studies/expedition-33"
@@ -46,12 +50,6 @@ export function Footer() {
                 >
                   <span className="font-medium group-hover:underline">Clair Obscur: Expedition 33</span>
                   <span className={`block text-xs font-mono mt-0.5 ${c.footerFaint}`}>Combat Loop</span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/case-studies/duolingo" className="group block">
-                  <span className="font-medium group-hover:underline">Duolingo</span>
-                  <span className={`block text-xs font-mono mt-0.5 ${c.footerFaint}`}>Language Learning</span>
                 </Link>
               </li>
             </ul>

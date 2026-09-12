@@ -4,7 +4,6 @@ import React from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
-  ArrowRight,
   Clock,
   CheckCircle2,
   AlertOctagon,
@@ -27,14 +26,14 @@ export default function SwiggyInstamartPage() {
   return (
     <article className="theme-swiggy min-h-screen bg-[var(--page-bg)] text-white pb-24 overflow-hidden">
       {/* Top Breadcrumb Bar */}
-      <div className="border-b border-white/20 bg-[var(--page-bg)]/90 backdrop-blur-md sticky top-20 z-40">
+      <div className="border-b border-white/20 bg-[var(--page-bg)]/90 backdrop-blur-md sticky top-0 z-40">
         <div className="max-w-5xl mx-auto px-6 h-12 flex items-center justify-between text-xs font-mono">
           <Link
-            href="/#breakdowns"
+            href="/#work"
             className="text-white/80 hover:text-white transition-colors flex items-center gap-1.5"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to Case Studies</span>
+            <span>Back to Work</span>
           </Link>
           <div className="flex items-center gap-3 text-white/80">
             <span>Case Study 01</span>
@@ -325,33 +324,6 @@ export default function SwiggyInstamartPage() {
           </div>
         </motion.section>
 
-        {/* Transition to Expedition 33 */}
-        <section className="pt-12 border-t border-white/20">
-          <div className="p-8 rounded-3xl bg-white/10 border border-white/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 backdrop-blur-md">
-            <div className="space-y-2">
-              <div className="text-xs font-mono uppercase tracking-widest text-white/80 font-bold">
-                Next Case Study
-              </div>
-              <h3 className="text-2xl font-editorial text-white">
-                Clair Obscur: Expedition 33
-              </h3>
-              <p className="text-sm text-white/85 font-sans max-w-md">
-                Explore how Sandfall Interactive solved the turn-based combat engagement cliff
-                through real-time parry and dodge mechanics under strict indie constraints.
-              </p>
-            </div>
-
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-              <Link
-                href="/case-studies/expedition-33"
-                className="px-6 py-3.5 rounded-2xl bg-white text-[var(--page-accent-fg)] font-mono text-xs uppercase tracking-wider font-bold flex items-center gap-2 shrink-0 shadow-lg"
-              >
-                <span>Read Game Breakdown</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </motion.div>
-          </div>
-        </section>
       </main>
     </article>
   );

@@ -1,0 +1,160 @@
+.page {
+  position: relative;
+  isolation: isolate;
+  background: #171a19;
+  color: #f0e7d6;
+}
+
+/* Stationary canvas weave: no animation, filters, or scroll listeners. */
+.page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: .16;
+  background-image: repeating-linear-gradient(0deg, transparent 0 3px, #c6b28a18 3px 4px),
+    repeating-linear-gradient(90deg, transparent 0 3px, #c6b28a12 3px 4px);
+}
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding-top: clamp(64px, 9vw, 132px);
+  border-color: #bba77f40;
+  background: linear-gradient(180deg, transparent 55%, #171a19 92%),
+    linear-gradient(90deg, #171a19f2 0%, #171a19b8 43%, #171a1929 100%),
+    url('/images/expedition33/screenshot_2.jpg') center top / auto 960px no-repeat;
+}
+
+.hero h1 {
+  max-width: 850px;
+  font-size: clamp(3.4rem, 7.8vw, 6.7rem);
+  line-height: .98;
+  letter-spacing: -.055em;
+  color: #f2e6ce;
+  text-wrap: balance;
+  font-weight: 400;
+}
+
+.subtitle {
+  display: block;
+  margin-top: 25px;
+  max-width: 600px;
+  font-size: clamp(1.55rem, 3.1vw, 2.5rem);
+  line-height: 1.16;
+  letter-spacing: -.025em;
+  color: #d2b98a;
+}
+
+.hero h1 + p {
+  margin-top: 32px;
+  max-width: 620px;
+  font-size: clamp(1.25rem, 2.3vw, 1.7rem);
+  color: #e5dccb;
+  line-height: 1.45;
+}
+
+.metadata {
+  color: #d2b98a;
+  font-size: 11px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-bottom: 40px;
+}
+
+.scope {
+  max-width: 720px;
+  padding: 16px 0 16px 20px;
+  border-left: 2px solid #bda273;
+  color: #c8c2b4;
+  font-size: 12px;
+  line-height: 1.65;
+  margin-top: 32px;
+}
+
+.screenshot {
+  border: 1px solid #ad987363;
+  padding: 8px;
+  background: #282a25;
+  box-shadow: 0 24px 60px #0005;
+  margin-top: 36px;
+}
+
+.screenshot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.screenshot figcaption {
+  padding: 16px 12px 10px;
+  color: #cec5b2;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.body > section {
+  position: relative;
+  padding-top: 24px;
+}
+
+.body > section > div:first-child {
+  color: #c9ac78;
+  font-size: 10px;
+  letter-spacing: .18em;
+}
+
+.body h2 {
+  color: #eee0c5;
+  max-width: 800px;
+  text-wrap: balance;
+  font-size: clamp(2rem, 3.8vw, 3.15rem);
+  line-height: 1.13;
+}
+
+/* Scope the surface treatment to this study, including its existing demos. */
+.page :global(.rounded-3xl) {
+  border-radius: 3px;
+  border-color: #bda27345;
+  background-color: #232721;
+  backdrop-filter: none;
+  box-shadow: 0 10px 32px #0002;
+}
+
+.page :global(.rounded-2xl) {
+  border-radius: 3px;
+  border-color: #bda27345;
+  backdrop-filter: none;
+}
+
+.page :global(.rounded-xl) {
+  border-radius: 3px;
+}
+
+.page :is(button, a):focus-visible {
+  outline: 2px solid #e2c18a;
+  outline-offset: 5px;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    background-size: auto, auto, auto 740px;
+    background-position: center, center, 57% top;
+  }
+  .metadata { gap: 10px 16px; margin-bottom: 32px; }
+  .scope { padding-left: 14px; }
+  .screenshot { padding: 5px; }
+  .body > section { padding-top: 8px; }
+}
+
+@media (prefers-contrast: more) {
+  .page::after { display: none; }
+  .hero { background: #171a19; }
+}

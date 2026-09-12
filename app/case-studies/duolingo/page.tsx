@@ -4,7 +4,6 @@ import React from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
-  ArrowRight,
   Compass,
   Target,
   ShieldAlert,
@@ -89,7 +88,7 @@ export default function DuolingoPage() {
   return (
     <article className="theme-duolingo min-h-screen bg-[var(--page-bg)] text-[var(--page-fg)] pb-24 overflow-hidden">
       {/* Breadcrumb */}
-      <div className="border-b border-[var(--page-border)] bg-[var(--page-bg)]/90 backdrop-blur-md sticky top-20 z-40">
+      <div className="border-b border-[var(--page-border)] bg-[var(--page-bg)]/90 backdrop-blur-md sticky top-0 z-40">
         <div className="max-w-5xl mx-auto px-6 h-12 flex items-center justify-between text-xs font-mono">
           <Link
             href="/#work"
@@ -603,38 +602,6 @@ export default function DuolingoPage() {
           </p>
         </Section>
 
-        {/* Prev / next */}
-        <div className="py-12 border-t border-[var(--page-border)]">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div>
-              <div className="text-[10px] font-mono uppercase tracking-[0.14em] text-[var(--page-fg-muted)]">
-                Other case studies
-              </div>
-              <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2 font-editorial text-lg">
-                <Link
-                  href="/case-studies/swiggy-instamart"
-                  className="hover:text-[var(--page-accent)] transition-colors"
-                >
-                  Swiggy Instamart
-                </Link>
-                <span className="text-[var(--page-fg-muted)]">·</span>
-                <Link
-                  href="/case-studies/expedition-33"
-                  className="hover:text-[var(--page-accent)] transition-colors"
-                >
-                  Clair Obscur: Expedition 33
-                </Link>
-              </div>
-            </div>
-            <Link
-              href="/#work"
-              className="btn-premium inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--page-accent)] text-[var(--page-accent-fg)] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[var(--page-accent-hover)]"
-            >
-              <span>All work</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
       </main>
     </article>
   );

@@ -4,9 +4,14 @@
  * (Header / Footer) so navigation, homepage and case studies stay in
  * their own visual lane.
  */
-export type ThemeName = "global" | "swiggy" | "expedition" | "duolingo";
+export type ThemeName = "global" | "swiggy" | "expedition" | "duolingo" | "steam";
+
+export function isCaseStudyRoute(pathname: string): boolean {
+  return pathname === "/case-studies" || pathname.startsWith("/case-studies/");
+}
 
 export function getThemeName(pathname: string): ThemeName {
+  if (pathname.startsWith("/case-studies/steam-discovery")) return "steam";
   if (pathname.startsWith("/case-studies/swiggy-instamart")) return "swiggy";
   if (pathname.startsWith("/case-studies/expedition-33")) return "expedition";
   if (pathname.startsWith("/case-studies/duolingo")) return "duolingo";
@@ -36,8 +41,8 @@ interface ChromeTheme {
 
 const GLOBAL: ChromeTheme = {
   barScrolled:
-    "bg-[#ece5d6]/92 backdrop-blur-md border-b border-[#d0c6ac] shadow-sm shadow-black/5 text-[#282e20]",
-  barTop: "bg-transparent border-b border-[#d0c6ac]/60 text-[#282e20]",
+    "bg-[#ece5d6] border-b border-[#d0c6ac] shadow-sm shadow-black/5 text-[#282e20]",
+  barTop: "bg-[#ece5d6] border-b border-[#d0c6ac]/60 text-[#282e20]",
   brand: "text-[#282e20] hover:text-[#525e3c]",
   tag: "text-[#5c6350]",
   dot: "bg-[#525e3c]",
@@ -76,22 +81,22 @@ const SWIGGY: ChromeTheme = {
 
 const EXPEDITION: ChromeTheme = {
   barScrolled:
-    "bg-[#8e1a2b]/95 backdrop-blur-md border-b border-white/15 shadow-xl shadow-black/30 text-[#f7eeec]",
-  barTop: "bg-transparent border-b border-white/12 text-[#f7eeec]",
-  brand: "text-[#f7eeec] hover:text-white",
-  tag: "text-[#f7eeec]/70",
-  dot: "bg-[#e8b04b]",
-  navLink: "text-[#f7eeec]/78 hover:text-[#f7eeec]",
-  activeLink: "text-[#f7eeec] font-bold underline underline-offset-4 decoration-[#e8b04b]",
+    "bg-[#171a19]/95 backdrop-blur-md border-b border-white/15 shadow-xl shadow-black/30 text-[#f0e7d6]",
+  barTop: "bg-transparent border-b border-white/12 text-[#f0e7d6]",
+  brand: "text-[#f0e7d6] hover:text-white",
+  tag: "text-[#f0e7d6]/70",
+  dot: "bg-[#d2b98a]",
+  navLink: "text-[#f0e7d6]/78 hover:text-[#f0e7d6]",
+  activeLink: "text-[#f0e7d6] font-bold underline underline-offset-4 decoration-[#d2b98a]",
   divider: "bg-white/20",
-  pill: "bg-white/10 hover:bg-white/18 text-[#f7eeec] border border-white/18",
-  dropdown: "bg-[#6b0f1f] border-white/18 shadow-2xl text-[#f7eeec]",
+  pill: "bg-white/10 hover:bg-white/18 text-[#f0e7d6] border border-white/18",
+  dropdown: "bg-[#22251f] border-white/18 shadow-2xl text-[#f0e7d6]",
   dropdownItemHover: "hover:bg-white/8",
-  drawer: "bg-[#8e1a2b] border-b border-white/15 text-[#f7eeec]",
-  footerBg: "bg-[#6b0f1f] text-[#f7eeec]",
+  drawer: "bg-[#171a19] border-b border-white/15 text-[#f0e7d6]",
+  footerBg: "bg-[#22251f] text-[#f0e7d6]",
   footerRule: "border-white/15",
-  footerFaint: "text-[#f7eeec]/70",
-  footerChip: "bg-white/10 text-[#f7eeec] border border-white/18",
+  footerFaint: "text-[#f0e7d6]/70",
+  footerChip: "bg-white/10 text-[#f0e7d6] border border-white/18",
 };
 
 const DUOLINGO: ChromeTheme = {
@@ -115,6 +120,24 @@ const DUOLINGO: ChromeTheme = {
 };
 
 const MAP: Record<ThemeName, ChromeTheme> = {
+  steam: {
+    barScrolled: "bg-[#07111d] border-b border-[#1f3a52] text-[#dbe9f4]",
+    barTop: "bg-[#07111d] border-b border-[#1f3a52] text-[#dbe9f4]",
+    brand: "text-[#f4f8fb]",
+    tag: "text-[#8fb8d8]",
+    dot: "bg-[#66c0f4]",
+    navLink: "text-[#8fb8d8] hover:text-[#f4f8fb]",
+    activeLink: "text-[#66c0f4]",
+    divider: "bg-[#1f3a52]",
+    pill: "bg-[#0b1823] text-[#dbe9f4] border border-[#28445d]",
+    dropdown: "bg-[#0b1823] border-[#28445d] text-[#dbe9f4]",
+    dropdownItemHover: "hover:bg-[#142c40]",
+    drawer: "bg-[#07111d] text-[#dbe9f4]",
+    footerBg: "bg-[#07111d] text-[#dbe9f4]",
+    footerRule: "border-[#1f3a52]",
+    footerFaint: "text-[#8fb8d8]",
+    footerChip: "bg-[#0b1823] text-[#dbe9f4] border border-[#28445d]",
+  },
   global: GLOBAL,
   swiggy: SWIGGY,
   expedition: EXPEDITION,

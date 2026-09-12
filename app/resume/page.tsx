@@ -124,31 +124,6 @@ export default function ResumePage() {
             <div className="space-y-2 border-l-2 border-[var(--page-accent)] pl-5 py-1">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <div className="font-editorial font-bold text-lg">
-                  Swiggy Instamart — Reliability Isn’t Just Speed
-                </div>
-                <div className="text-xs font-mono text-[var(--page-fg-muted)]">Consumer Product Analysis</div>
-              </div>
-              <p className="text-sm text-[var(--page-fg-muted)] font-sans leading-relaxed">
-                Deconstructed quick-commerce delivery mechanics to examine the ETA Variance Paradox.
-                Built an interactive reliability distribution simulator proving that standard
-                deviation (σ) and P95 SLA breaches drive user churn more aggressively than mean
-                delivery duration. Modelled dark-store picking bottlenecks and proposed dynamic
-                confidence-buffered ETA intervals to improve 30-day cohort retention by +23%.
-              </p>
-              <div className="flex items-center gap-2 pt-1 no-print">
-                <Link
-                  href="/case-studies/swiggy-instamart"
-                  className="text-xs font-mono text-[var(--page-fg)] underline font-bold flex items-center gap-1"
-                >
-                  <span>View Interactive Case Study</span>
-                  <ExternalLink className="w-3 h-3" />
-                </Link>
-              </div>
-            </div>
-
-            <div className="space-y-2 border-l-2 border-[var(--page-accent)] pl-5 py-1">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                <div className="font-editorial font-bold text-lg">
                   Clair Obscur: Expedition 33 — Eliminating the Turn-Based Combat Cliff
                 </div>
                 <div className="text-xs font-mono text-[var(--page-fg-muted)]">Game Systems Strategy</div>
@@ -166,33 +141,6 @@ export default function ResumePage() {
                   className="text-xs font-mono text-[var(--page-fg)] underline font-bold flex items-center gap-1"
                 >
                   <span>View Interactive Game Breakdown</span>
-                  <ExternalLink className="w-3 h-3" />
-                </Link>
-              </div>
-            </div>
-
-            <div className="space-y-2 border-l-2 border-[var(--page-accent)] pl-5 py-1">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                <div className="font-editorial font-bold text-lg">
-                  Duolingo — From Streaks to Real-World Fluency
-                </div>
-                <div className="text-xs font-mono text-[var(--page-fg-muted)]">Consumer Product Strategy</div>
-              </div>
-              <p className="text-sm text-[var(--page-fg-muted)] font-sans leading-relaxed">
-                Framed a product hypothesis for converting Duolingo’s daily-habit engagement (56.5M
-                DAUs, ~15M year-long streaks) into usable communication capability. Proposed a
-                personalised AI “Real World” mission layer over the existing curriculum, a
-                four-dimension evaluation model (comprehension, response, accuracy, recovery), a
-                Weak Spot Engine with spaced reinforcement, and a Real-World Readiness North Star.
-                Specified a 500K/500K RCT and metrics framework. Built an interactive product-loop
-                and mission walkthrough.
-              </p>
-              <div className="flex items-center gap-2 pt-1 no-print">
-                <Link
-                  href="/case-studies/duolingo"
-                  className="text-xs font-mono text-[var(--page-fg)] underline font-bold flex items-center gap-1"
-                >
-                  <span>View Interactive Case Study</span>
                   <ExternalLink className="w-3 h-3" />
                 </Link>
               </div>

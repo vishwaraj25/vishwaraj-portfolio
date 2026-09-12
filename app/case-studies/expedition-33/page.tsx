@@ -4,37 +4,30 @@ import React from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
-  ArrowRight,
-  Shield,
-  Zap,
-  Flame,
   Brain,
-  Award,
-  Layers,
   Sparkles,
-  BookOpen,
-  Image as ImageIcon,
 } from "lucide-react";
-import { motion } from "framer-motion";
 import { CombatLoopVisualizer } from "@/components/expedition/CombatLoopVisualizer";
 import { ParryTimingTester } from "@/components/expedition/ParryTimingTester";
 import { PlayerSegmentation } from "@/components/expedition/PlayerSegmentation";
 import { ConstraintDossier } from "@/components/expedition/ConstraintDossier";
 import { GameGallery } from "@/components/expedition/GameGallery";
-import { Badge } from "@/components/ui/Badge";
+import styles from "./expedition.module.css";
+import { useDossierMotion } from "@/components/expedition/useDossierMotion";
 
 export default function Expedition33Page() {
+  const dossierRef = useDossierMotion();
   return (
-    <article className="theme-expedition min-h-screen bg-[var(--page-bg)] text-white pb-24 overflow-hidden">
+    <article ref={dossierRef} className={`${styles.page} theme-expedition min-h-screen pb-24 overflow-hidden`}>
       {/* Top Breadcrumb Bar */}
-      <div className="border-b border-white/20 bg-[var(--page-bg)]/90 backdrop-blur-md sticky top-20 z-40">
+      <div className="border-b border-white/20 bg-[var(--page-bg)]/90 backdrop-blur-md sticky top-0 z-40">
         <div className="max-w-5xl mx-auto px-6 h-12 flex items-center justify-between text-xs font-mono">
           <Link
-            href="/#breakdowns"
+            href="/#work"
             className="text-white/80 hover:text-white transition-colors flex items-center gap-1.5"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to Breakdowns</span>
+            <span>Back to Work</span>
           </Link>
           <div className="flex items-center gap-3 text-white/80">
             <span>Dossier 02</span>
@@ -45,30 +38,19 @@ export default function Expedition33Page() {
       </div>
 
       {/* Hero Dossier Header */}
-      <header className="pt-16 sm:pt-24 pb-16 px-6 sm:px-8 border-b border-white/20">
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-5xl mx-auto space-y-6"
-        >
-          {/* Metadata badges */}
-          <div className="flex flex-wrap items-center gap-2.5">
-            <span className="px-3 py-1 rounded-full bg-black text-white text-xs font-mono uppercase tracking-wider font-bold">
-              Game Product / Combat Design
-            </span>
-            <span className="px-3 py-1 rounded-full bg-white/20 text-white text-xs font-mono uppercase tracking-wider font-semibold border border-white/30">
-              Sandfall Interactive • UE5
-            </span>
-            <span className="text-xs font-mono text-white/80">
-              10 min read • By Vishwaraj Saxena
-            </span>
+      <header className={`${styles.hero} pb-16 px-6 sm:px-8 border-b`}>
+        <div className="max-w-5xl mx-auto space-y-6">
+          <div className={styles.metadata}>
+            <span>Clair Obscur: Expedition 33</span>
+            <span>Game Product / Combat Design</span>
+            <span>By Vishwaraj Saxena</span>
           </div>
 
           {/* Title & Core Question */}
           <div className="space-y-4">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-editorial tracking-tight text-white font-normal leading-[1.08]">
-              The Kinetic Turn: Eliminating the Combat Engagement Cliff
+              The Kinetic Turn
+              <span className={styles.subtitle}>Eliminating the Combat Engagement Cliff</span>
             </h1>
             <p className="text-2xl sm:text-3xl font-editorial italic text-white/95 max-w-3xl">
               “How does a turn-based combat system maintain player engagement when the player isn’t
@@ -78,13 +60,13 @@ export default function Expedition33Page() {
 
           <p className="text-base sm:text-lg text-white/90 font-sans leading-relaxed max-w-3xl pt-2">
             An independent product strategy and mechanics deconstruction of <em>Clair Obscur: Expedition 33</em>.
-            Examining how Sandfall Interactive modernized turn-based combat by introducing active
-            real-time parry and dodge mechanics into enemy turns—eradicating passive downtime under
-            ruthless indie budget and team constraints.
+            Examining how Sandfall Interactive modernized turn-based combat by adding active
+            real-time parry and dodge mechanics to enemy turns, reducing passive downtime under
+            tight indie budget and team constraints.
           </p>
 
           {/* Scope Note */}
-          <div className="p-4 rounded-2xl bg-black/20 border border-white/20 text-xs font-sans text-white/90 space-y-1">
+          <div className={styles.scope}>
             <div className="text-[11px] font-mono uppercase text-white font-bold">
               Scope of This Case Study
             </div>
@@ -96,31 +78,19 @@ export default function Expedition33Page() {
             </p>
           </div>
 
-          {/* Main Cinematic Screenshot Feature */}
-          <div className="pt-6">
-            <div className="rounded-3xl overflow-hidden border border-white/30 shadow-2xl relative aspect-video bg-black/40">
-              <img
-                src="/images/expedition33/screenshot_1.jpg"
-                alt="Clair Obscur: Expedition 33 In-Game Combat Encounter"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-6 sm:p-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-                <div>
-                  <div className="text-xs font-mono uppercase text-white font-bold flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                    Shipped Combat HUD • Real-Time Timing Mechanics
-                  </div>
-                  <div className="text-sm text-white/90 font-sans mt-1 max-w-xl">
-                    Free aim, reticle targeting, and reactive dodge/parry cues overlaid onto
-                    traditional tactical party commands.
-                  </div>
-                </div>
-                <div className="text-xs font-mono text-white/80 bg-white/20 px-3 py-1.5 rounded-full border border-white/30 shrink-0">
-                  Unreal Engine 5
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Original game capture stays unfiltered as visual evidence. */}
+          <figure className={styles.screenshot}>
+            <img
+              src="/images/expedition33/screenshot_1.jpg"
+              alt="Clair Obscur: Expedition 33 In-Game Combat Encounter"
+              width={1920}
+              height={1080}
+            />
+            <figcaption>
+              <strong>Shipped combat HUD.</strong> Free aim, reticle targeting, and reactive
+              dodge/parry cues overlaid onto traditional tactical party commands.
+            </figcaption>
+          </figure>
 
           {/* Key Metric Strip */}
           <div className="pt-6">
@@ -163,19 +133,13 @@ export default function Expedition33Page() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </header>
 
       {/* Main Content Body */}
-      <main className="max-w-5xl mx-auto px-6 sm:px-8 pt-16 space-y-20">
+      <main className={`${styles.body} max-w-5xl mx-auto px-6 sm:px-8 pt-16 space-y-20`}>
         {/* Section 1: Context & Indie Studio Constraints */}
-        <motion.section
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6"
-        >
+        <section className="space-y-6">
           <div className="text-xs font-mono uppercase tracking-widest text-white/80 font-bold">
             01 / Executive Context & Studio Constraints
           </div>
@@ -193,8 +157,8 @@ export default function Expedition33Page() {
             <p>
               Sandfall faced a daunting product challenge:{" "}
               <strong className="text-white font-semibold">
-                Deliver an unforgettable, visually stunning RPG in Unreal Engine 5 that modernizes the
-                genre’s moment-to-moment feel, without the $150M+ capital of Square Enix or Atlus.
+                Deliver a visually memorable RPG in Unreal Engine 5 that modernizes the genre’s
+                moment-to-moment feel without the $150M+ capital of Square Enix or Atlus.
               </strong>
             </p>
             <p>
@@ -206,16 +170,10 @@ export default function Expedition33Page() {
           </div>
 
           <ConstraintDossier />
-        </motion.section>
+        </section>
 
         {/* Section 2: Official Game Visuals & Screenshots */}
-        <motion.section
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6"
-        >
+        <section className="space-y-6">
           <div className="text-xs font-mono uppercase tracking-widest text-white/80 font-bold">
             02 / In-Game Visual Evidence
           </div>
@@ -228,16 +186,10 @@ export default function Expedition33Page() {
           </p>
 
           <GameGallery />
-        </motion.section>
+        </section>
 
         {/* Section 3: The Problem & The Engagement Cliff */}
-        <motion.section
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6"
-        >
+        <section className="space-y-6">
           <div className="text-xs font-mono uppercase tracking-widest text-white/80 font-bold">
             03 / The Core Product Problem
           </div>
@@ -252,23 +204,17 @@ export default function Expedition33Page() {
               animations play out with zero interaction.
             </p>
             <p>
-              In the critical first two hours of a new game—before intricate spell synergies or
-              deep gear builds are unlocked—this passive dead zone leads to boredom, phone-checking,
-              and catastrophic early-funnel drop-off.
+              In the critical first two hours, before intricate spell synergies or deep gear builds
+              are unlocked, this passive dead zone can lead to boredom, phone-checking, and
+              early-funnel drop-off.
             </p>
           </div>
 
           <PlayerSegmentation />
-        </motion.section>
+        </section>
 
         {/* Section 4: The Mechanical Solution (Mini-PRD) */}
-        <motion.section
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6"
-        >
+        <section className="space-y-6">
           <div className="text-xs font-mono uppercase tracking-widest text-white/80 font-bold">
             04 / The Mechanical Solution (Mini-PRD)
           </div>
@@ -317,16 +263,10 @@ export default function Expedition33Page() {
               </div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Section 5: Interactive 6-Stage Combat Loop Visualizer */}
-        <motion.section
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6"
-        >
+        <section className="space-y-6">
           <div className="text-xs font-mono uppercase tracking-widest text-white/80 font-bold">
             05 / Interactive Combat Loop
           </div>
@@ -339,16 +279,10 @@ export default function Expedition33Page() {
           </p>
 
           <CombatLoopVisualizer />
-        </motion.section>
+        </section>
 
         {/* Section 6: Interactive Reflex Tester */}
-        <motion.section
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6"
-        >
+        <section className="space-y-6">
           <div className="text-xs font-mono uppercase tracking-widest text-white/80 font-bold">
             06 / Interactive Reflex Test
           </div>
@@ -361,16 +295,10 @@ export default function Expedition33Page() {
           </p>
 
           <ParryTimingTester />
-        </motion.section>
+        </section>
 
         {/* Section 7: PM Takeaways */}
-        <motion.section
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6"
-        >
+        <section className="space-y-6">
           <div className="text-xs font-mono uppercase tracking-widest text-white/80 font-bold">
             07 / Product Management Takeaways
           </div>
@@ -406,34 +334,6 @@ export default function Expedition33Page() {
                 combat feel immaculate.
               </p>
             </div>
-          </div>
-        </motion.section>
-
-        {/* Transition to Swiggy */}
-        <section className="pt-12 border-t border-white/20">
-          <div className="p-8 rounded-3xl bg-white/10 border border-white/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 backdrop-blur-md">
-            <div className="space-y-2">
-              <div className="text-xs font-mono uppercase tracking-widest text-white/80 font-bold">
-                Previous Case Study
-              </div>
-              <h3 className="text-2xl font-editorial text-white">
-                Swiggy Instamart: Reliability Isn’t Just Speed
-              </h3>
-              <p className="text-sm text-white/85 font-sans max-w-md">
-                Explore the mathematics of quick-commerce trust, ETA variance distributions, and dark
-                store bottlenecks.
-              </p>
-            </div>
-
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-              <Link
-                href="/case-studies/swiggy-instamart"
-                className="px-6 py-3.5 rounded-2xl bg-white text-[var(--page-accent-fg)] font-mono text-xs uppercase tracking-wider font-bold flex items-center gap-2 shrink-0 shadow-lg"
-              >
-                <span>Read Swiggy Case Study</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </motion.div>
           </div>
         </section>
       </main>

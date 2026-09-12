@@ -7,27 +7,12 @@ import { ArrowRight, ArrowUpRight, FileText } from "lucide-react";
 const CASE_STUDIES = [
   {
     index: "01",
-    slug: "/case-studies/swiggy-instamart",
-    kicker: "Swiggy Instamart — Consumer / Quick Commerce",
-    accent: "#ff5400",
-    title: "Reliability isn’t just speed: the mathematics of quick-commerce trust",
-    question: "Is delivery speed actually the right measure of reliability?",
-    dek: "Why standard deviation erodes customer trust faster than a slow delivery — failed 10-minute promises, how dark-store picking compounds ETA variance, and why predictability drives repeat usage.",
-    metrics: [
-      { k: "P95 SLA adherence", v: "96.4%" },
-      { k: "Variance spread", v: "±2.4m" },
-      { k: "Interaction", v: "Reliability simulator" },
-    ],
-    cta: "Read the Swiggy breakdown",
-  },
-  {
-    index: "02",
     slug: "/case-studies/expedition-33",
-    kicker: "Clair Obscur: Expedition 33 — Product / Interactive Systems",
+    kicker: "Clair Obscur: Expedition 33 / Product and Interactive Systems",
     accent: "#8e1a2b",
     title: "The kinetic turn: eliminating the engagement cliff",
     question: "How does a turn-based system stay engaging when the user isn’t acting?",
-    dek: "A systems dossier on Sandfall Interactive’s combat loop — real-time inputs folded into passive turns to modernise a legacy interaction model under strict resource constraints.",
+    dek: "A systems dossier on Sandfall Interactive’s combat loop, where real-time inputs make passive turns feel active under strict resource constraints.",
     metrics: [
       { k: "Active screen time", v: "98%" },
       { k: "Early-funnel churn", v: "−34%" },
@@ -36,19 +21,19 @@ const CASE_STUDIES = [
     cta: "Read the systems breakdown",
   },
   {
-    index: "03",
-    slug: "/case-studies/duolingo",
-    kicker: "Duolingo — Consumer / Language Learning",
-    accent: "#58cc02",
-    title: "From streaks to real-world fluency",
-    question: "Once millions practise every day, what should happen next?",
-    dek: "A product hypothesis for turning Duolingo’s engagement into usable capability — personalised AI missions that test whether a learner can retrieve and apply language under real-world pressure.",
+    index: "02",
+    slug: "/case-studies/steam-discovery",
+    kicker: "Steam Discovery / Marketplace Product Strategy",
+    accent: "#66c0f4",
+    title: "Steam discovery is becoming an attention market",
+    question: "How should a store help unfamiliar games earn qualified attention?",
+    dek: "A product case study on crowded release volume, concentrated wishlist gains, and the discovery disadvantage facing games without pre-existing traction.",
     metrics: [
-      { k: "Reframed metric", v: "Real-World Readiness" },
-      { k: "Model shift", v: "Activity → capability" },
-      { k: "Interaction", v: "Mission + loop demo" },
+      { k: "2025 releases", v: "21,308" },
+      { k: "Next Fest scale", v: "4,244 games" },
+      { k: "Concentration", v: "Top 4%" },
     ],
-    cta: "Read the Duolingo breakdown",
+    cta: "Read the Steam discovery study",
   },
 ];
 
@@ -95,25 +80,7 @@ export default function HomePage() {
     <div className="bg-[var(--page-bg)] text-[var(--page-fg)] theme-global">
       {/* ---------------------------------------------------------------- HERO */}
       <section className="px-6 sm:px-8 max-w-5xl mx-auto pt-20 sm:pt-28 pb-20">
-        <div
-          className="rise flex items-center gap-3 text-xs font-mono uppercase tracking-[0.2em] text-[var(--page-fg-muted)]"
-        >
-          <span className="inline-flex items-center gap-1.5">
-            {CASE_STUDIES.map((c) => (
-              <span
-                key={c.slug}
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ backgroundColor: c.accent }}
-                aria-hidden
-              />
-            ))}
-          </span>
-          <span>Product Portfolio</span>
-          <span className="hidden sm:inline opacity-40">/</span>
-          <span className="hidden sm:inline">Bengaluru, India</span>
-        </div>
-
-        <h1 className="mt-7 font-editorial font-normal tracking-tight leading-[1.02] text-[3.4rem] sm:text-8xl">
+        <h1 className="font-editorial font-normal tracking-tight leading-[1.02] text-[3.4rem] sm:text-8xl">
           <HeroLine text="Vishwaraj" />
           <HeroLine text="Saxena" start={1} />
         </h1>
@@ -122,17 +89,14 @@ export default function HomePage() {
           className="rise mt-8 max-w-2xl text-xl sm:text-2xl font-editorial italic leading-snug"
           style={{ animationDelay: "0.4s" }}
         >
-          I take products apart to understand the{" "}
-          <span className="text-[var(--page-highlight)] not-italic font-medium">decisions,
-          mechanics and user behaviours</span> that make them work.
+          Product Portfolio
         </p>
 
         <p
           className="rise mt-5 max-w-xl text-base leading-relaxed text-[var(--page-fg-muted)] font-sans"
           style={{ animationDelay: "0.5s" }}
         >
-          An interactive product journal — three deep breakdowns of quick-commerce reliability,
-          turn-based interaction design, and language-learning engagement.
+          Selected product case studies and shipped work.
         </p>
 
         <div
@@ -143,7 +107,7 @@ export default function HomePage() {
             href="#work"
             className="btn-premium inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--page-accent)] text-[var(--page-accent-fg)] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[var(--page-accent-hover)]"
           >
-            <span>View the work</span>
+            <span>View the Work</span>
             <ArrowRight className="w-4 h-4" />
           </a>
           <Link
@@ -165,7 +129,7 @@ export default function HomePage() {
           <h2 className="text-xs font-mono uppercase tracking-[0.2em] text-[var(--page-fg-muted)]">
             Selected case studies
           </h2>
-          <span className="text-xs font-mono text-[var(--page-fg-muted)]">Three deep breakdowns</span>
+          <span className="text-xs font-mono text-[var(--page-fg-muted)]">Current work</span>
         </div>
 
         <div>
@@ -278,11 +242,11 @@ export default function HomePage() {
               <strong className="text-[var(--page-highlight)] font-semibold">
                 rigorous product analysis
               </strong>{" "}
-              — funnel analytics, queuing theory, unit economics, retention — and{" "}
+                across funnel analytics, queuing theory, unit economics, and retention, alongside{" "}
               <strong className="text-[var(--page-highlight)] font-semibold">
                 systems &amp; interaction design
               </strong>{" "}
-              — pacing, user agency, feedback loops, tactile response.
+                pacing, user agency, feedback loops, and tactile response.
             </p>
             <p>
               When I evaluate a product I don’t look at vanity metrics or UI trends. I dissect the

@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight, Menu, X, Gamepad2, ShoppingBag, Languages } from "lucide-react";
+import { ArrowUpRight, Menu, X, Gamepad2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { getChromeTheme } from "@/lib/theme";
+import { getChromeTheme, isCaseStudyRoute } from "@/lib/theme";
 
 export function Header() {
   const pathname = usePathname();
@@ -16,15 +16,16 @@ export function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [pathname]);
-
   const c = getChromeTheme(pathname);
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
+  // Case studies supply their own header and navigation within the page.
+  if (isCaseStudyRoute(pathname)) return null;
 
   // Map the shared chrome palette onto the local class names this file uses.
   const theme = {
@@ -63,11 +64,6 @@ export function Header() {
             </span>
             <span className={`inline-block w-2 h-2 rounded-full shadow-sm animate-pulse ${theme.pulseDot}`} />
           </div>
-          <div className={`flex items-center gap-1.5 text-xs font-mono tracking-widest uppercase ${theme.tagText}`}>
-            <span>Product</span>
-            <span className="opacity-50">/</span>
-            <span>Portfolio</span>
-          </div>
         </Link>
 
         {/* Desktop Navigation */}
@@ -75,7 +71,7 @@ export function Header() {
           {/* Case Studies Link / Quick Jump */}
           <div className="relative group">
             <Link
-              href="/#breakdowns"
+              href="/#work"
               className={`font-mono text-xs tracking-wider uppercase transition-colors flex items-center gap-1.5 py-2 ${
                 pathname.startsWith("/case-studies") ? theme.activeLink : theme.navLink
               }`}
@@ -90,26 +86,8 @@ export function Header() {
                 className={`w-80 p-3 rounded-2xl border shadow-2xl backdrop-blur-xl ${theme.dropdownBg}`}
               >
                 <Link
-                  href="/case-studies/swiggy-instamart"
-                  className={`flex items-start gap-3 p-3 rounded-xl transition-colors group/item ${theme.dropdownItemHover}`}
-                >
-                  <div className="w-9 h-9 rounded-lg bg-[#FC8019] text-white flex items-center justify-center shrink-0 font-bold shadow-md">
-                    <ShoppingBag className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold transition-colors flex items-center gap-1">
-                      Swiggy Instamart
-                      <ArrowUpRight className="w-3 h-3 opacity-80" />
-                    </div>
-                    <div className="text-[11px] opacity-80 leading-snug mt-0.5">
-                      Reliability isn’t just speed
-                    </div>
-                  </div>
-                </Link>
-
-                <Link
                   href="/case-studies/expedition-33"
-                  className={`flex items-start gap-3 p-3 rounded-xl transition-colors group/item mt-1 ${theme.dropdownItemHover}`}
+                  className={`flex items-start gap-3 p-3 rounded-xl transition-colors group/item ${theme.dropdownItemHover}`}
                 >
                   <div className="w-9 h-9 rounded-lg bg-[#991B1B] text-white flex items-center justify-center shrink-0 shadow-md">
                     <Gamepad2 className="w-4 h-4" />
@@ -121,24 +99,6 @@ export function Header() {
                     </div>
                     <div className="text-[11px] opacity-80 leading-snug mt-0.5">
                       Active turn-based combat engagement
-                    </div>
-                  </div>
-                </Link>
-
-                <Link
-                  href="/case-studies/duolingo"
-                  className={`flex items-start gap-3 p-3 rounded-xl transition-colors group/item mt-1 ${theme.dropdownItemHover}`}
-                >
-                  <div className="w-9 h-9 rounded-lg bg-[#58cc02] text-[#0a1f0a] flex items-center justify-center shrink-0 shadow-md">
-                    <Languages className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold transition-colors flex items-center gap-1">
-                      Duolingo
-                      <ArrowUpRight className="w-3 h-3 opacity-80" />
-                    </div>
-                    <div className="text-[11px] opacity-80 leading-snug mt-0.5">
-                      From streaks to real-world fluency
                     </div>
                   </div>
                 </Link>
@@ -213,25 +173,12 @@ export function Header() {
             className={`md:hidden px-6 py-6 space-y-4 shadow-2xl ${theme.drawerBg}`}
           >
             <div className="text-xs font-mono uppercase opacity-70 tracking-wider">
-              Selected Breakdowns
+              Selected Breakdown
             </div>
             <div className="space-y-2">
               <Link
-                href="/case-studies/swiggy-instamart"
-                className="flex items-center justify-between p-3.5 rounded-xl border border-current/20"
-              >
-                <div className="flex items-center gap-3">
-                  <ShoppingBag className="w-4 h-4 text-[#FC8019]" />
-                  <div>
-                    <div className="text-sm font-bold">Swiggy Instamart</div>
-                    <div className="text-xs opacity-75">Reliability isn't just speed</div>
-                  </div>
-                </div>
-                <ArrowUpRight className="w-4 h-4 opacity-70" />
-              </Link>
-
-              <Link
                 href="/case-studies/expedition-33"
+                onClick={closeMobileMenu}
                 className="flex items-center justify-between p-3.5 rounded-xl border border-current/20"
               >
                 <div className="flex items-center gap-3">
@@ -243,30 +190,28 @@ export function Header() {
                 </div>
                 <ArrowUpRight className="w-4 h-4 opacity-70" />
               </Link>
-
-              <Link
-                href="/case-studies/duolingo"
-                className="flex items-center justify-between p-3.5 rounded-xl border border-current/20"
-              >
-                <div className="flex items-center gap-3">
-                  <Languages className="w-4 h-4 text-[#58cc02]" />
-                  <div>
-                    <div className="text-sm font-bold">Duolingo</div>
-                    <div className="text-xs opacity-75">From streaks to real-world fluency</div>
-                  </div>
-                </div>
-                <ArrowUpRight className="w-4 h-4 opacity-70" />
-              </Link>
             </div>
 
             <div className="pt-3 border-t border-current/20 space-y-3 font-mono text-sm">
-              <Link href="/#philosophy" className="block opacity-90 hover:opacity-100 uppercase">
+              <Link
+                href="/#philosophy"
+                onClick={closeMobileMenu}
+                className="block opacity-90 hover:opacity-100 uppercase"
+              >
                 Philosophy
               </Link>
-              <Link href="/#about" className="block opacity-90 hover:opacity-100 uppercase">
+              <Link
+                href="/#about"
+                onClick={closeMobileMenu}
+                className="block opacity-90 hover:opacity-100 uppercase"
+              >
                 About
               </Link>
-              <Link href="/resume" className="block opacity-90 hover:opacity-100 uppercase">
+              <Link
+                href="/resume"
+                onClick={closeMobileMenu}
+                className="block opacity-90 hover:opacity-100 uppercase"
+              >
                 Resume
               </Link>
               <div className="flex items-center gap-4 pt-2 text-xs">
