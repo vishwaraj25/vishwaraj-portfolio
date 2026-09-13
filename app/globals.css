@@ -122,6 +122,26 @@ body:has(.theme-epf) {
   --page-selection-fg: #f7f7f8;
 }
 
+/*
+  A dark inversion of the global olive/beige palette, scoped to a single
+  container. Deliberately NOT a route theme: no [data-theme] and no
+  `body:has()` hook, because it must never reach <body> or the chrome. The
+  homepage masthead opts in by adding this class, and everything inside it
+  keeps reading the same --page-* tokens as the rest of the site.
+*/
+.invert-dark {
+  --page-bg: #1b2016;          /* deep olive ground */
+  --page-bg-alt: #262c1f;
+  --page-surface: #2b3223;
+  --page-fg: #f2ecdd;          /* cream */
+  --page-fg-muted: #c2bba4;
+  --page-border: rgba(242, 236, 221, 0.22);
+  --page-accent: #ece5d6;      /* cream button on dark */
+  --page-accent-hover: #ffffff;
+  --page-accent-fg: #262b1c;   /* olive ink on the cream button */
+  --page-highlight: #e0cf9f;   /* pale sand for emphasised text */
+}
+
 @layer base {
   html, body {
     margin: 0;
