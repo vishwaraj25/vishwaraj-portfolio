@@ -180,7 +180,7 @@
 .appCard { border-radius:14px; padding:15px; background:#f2f2f4; }
 .appCardTitle { font-size:14px; font-weight:600; color:#0a0a0b; letter-spacing:-.008em; }
 .appCard p { font-size:12px!important; line-height:1.5; color:#5a5a5f; margin-top:7px!important; }
-.appAmount { font-size:26px; font-weight:600; color:#0a0a0b; letter-spacing:-.022em; }
+
 .appRowLine { display:flex; align-items:center; justify-content:space-between; gap:10px; font-size:12px; color:#5a5a5f; padding:11px 2px; border-bottom:1px solid #ececef; }
 .appRowLine b { color:#0a0a0b; font-weight:600; }
 /* On-screen controls. These are real buttons: the prototype is driven from
@@ -258,11 +258,7 @@
 
 /* Prototype */
 .prototype { margin-top:26px; border-radius:26px; padding:32px; }
-.prototypeHead { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:32px; }
-.prototypeHead .eyebrow { margin-bottom:0!important; }
-.resetButton { display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:500; color:#5c5c60; padding:8px 14px; border-radius:99px; background:rgba(255,255,255,.7); border:1px solid #dcdce1; cursor:pointer; transition:transform .2s cubic-bezier(.22,1,.36,1),color .2s,background-color .2s; }
-.resetButton:hover { color:#0a0a0b; background:#fff; transform:translateY(-1px); }
-.resetButton:active { transform:translateY(0) scale(.97); }
+
 .prototypeLayout { display:grid; grid-template-columns:282px minmax(0,1fr); gap:56px; align-items:start; }
 .checkPanel h3 { font-size:25px; margin-bottom:18px; }
 .checkPanel .body { margin-top:0!important; font-size:17px; }
@@ -270,8 +266,6 @@
 .primaryButton:hover { background:#2c2c30; transform:translateY(-2px); box-shadow:0 8px 20px #0a0a0b2e; }
 .primaryButton:active { transform:translateY(0) scale(.98); }
 
-.appAmountBlock { display:flex; flex-direction:column; gap:6px; padding:12px 2px 4px; border-top:1px solid #ececef; }
-.appButtonMuted { background:#e4e4e9; color:#5a5a5f; }
 .scanRow { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; border-radius:11px; font-size:12px; color:#5a5a5f; background:#f2f2f4; transition:background-color .25s ease-out,color .25s ease-out; }
 .scanRowDone { color:#0a0a0b; font-weight:500; background:#e7e7ec; }
 .scanDot { display:block; width:12px; height:12px; border-radius:50%; box-shadow:inset 0 0 0 1.5px #cfcfd5; }
@@ -290,15 +284,9 @@
 .checkAction p { font-size:15px; line-height:1.62; color:#5c5c60; }
 .checkFix { margin-top:9px!important; }
 .checkFix b { color:#0a0a0b; font-weight:600; }
-.fixButton { margin-top:15px; padding:9px 17px; font-size:13px; font-weight:600; color:#0a0a0b; background:rgba(255,255,255,.8); border:1px solid #d6d6db; border-radius:99px; cursor:pointer; transition:transform .2s cubic-bezier(.22,1,.36,1),background-color .2s,border-color .2s,color .2s; }
-.fixButton { display:inline-flex; align-items:center; gap:8px; }
-.fixButton:hover { background:#0a0a0b; color:#fff; border-color:#0a0a0b; transform:translateY(-1px); }
-.fixButton:active { transform:translateY(0) scale(.97); }
 
 /* Setup form */
-.setupForm { margin-top:26px; display:flex; flex-direction:column; gap:24px; }
-.setupForm fieldset { margin:0; padding:0; border:0; }
-.setupForm legend { font-size:13px; font-weight:600; color:#5c5c60; padding:0 0 11px; }
+
 .options { display:flex; flex-wrap:wrap; gap:9px; }
 .options label { display:inline-flex; align-items:center; gap:9px; font-size:14px; font-weight:500; color:#3a3a3e; padding:11px 16px; border-radius:99px; background:rgba(255,255,255,.72); box-shadow:0 0 0 1px #dcdce1; cursor:pointer; transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s; }
 .options label:hover { transform:translateY(-1px); box-shadow:0 0 0 1px #a8a8b0; }
@@ -372,7 +360,7 @@
  .recordBar { padding:17px 18px; } .recordGrid { padding:16px 18px 20px; } .recordHint { padding:20px 18px 0; } .verdict { padding:20px 18px; }
  .caveat { padding:20px; }
  .stakeholders>div { grid-template-columns:1fr; gap:8px; padding:18px 14px; }
- .solution { padding:56px 0; } .prototype { padding:22px; border-radius:22px; } .prototypeHead { margin-bottom:24px; }
+ .solution { padding:56px 0; } .prototype { padding:22px; border-radius:22px; }
  .checkPanel h3 { font-size:22px; } .checkAction { margin-left:0; }
  .previewToolbar { flex-wrap:wrap; gap:8px; } .outcomeCompare { grid-template-columns:1fr; }
  .options label { font-size:13px; padding:10px 14px; }
@@ -382,7 +370,7 @@
 }
 @media(prefers-reduced-motion:reduce) {
  .claimScene,.claimGrid { transform:rotateX(44deg) rotateZ(-10deg) translateY(-60px)!important; }
- .trendFill,.primaryButton,.recordRow,.fixButton,.resetButton,.phone,.scanRow,.nav a { transition:none!important; }
+ .trendFill,.primaryButton,.recordRow,.phone,.scanRow,.nav a { transition:none!important; }
  .phoneStep:hover .phone,.prototypeLayout:hover .phone,.recordRow:hover { transform:none; }
  .verdict { animation:none; }
 }

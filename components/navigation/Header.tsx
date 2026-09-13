@@ -120,14 +120,9 @@ export function Header() {
             About
           </Link>
 
-          <Link
-            href="/resume"
-            className={`font-mono text-xs tracking-wider uppercase transition-colors py-2 ${
-              pathname === "/resume" ? theme.activeLink : theme.navLink
-            }`}
-          >
-            Resume
-          </Link>
+          {/* Resume is hidden from the visible portfolio while it is reworked.
+              The /resume route still builds and renders — only the entry
+              points are removed, same as Swiggy and Duolingo. */}
 
           <div className={`h-4 w-[1px] ${theme.divider}`} />
 
@@ -206,13 +201,6 @@ export function Header() {
                 className="block opacity-90 hover:opacity-100 uppercase"
               >
                 About
-              </Link>
-              <Link
-                href="/resume"
-                onClick={closeMobileMenu}
-                className="block opacity-90 hover:opacity-100 uppercase"
-              >
-                Resume
               </Link>
               <div className="flex items-center gap-4 pt-2 text-xs">
                 <a

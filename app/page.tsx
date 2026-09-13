@@ -2,26 +2,28 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, FileText } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import HeroCurtain from "@/components/home/HeroCurtain";
 
+/* Display order. The 01/02/03 label is derived from position below rather
+   than stored here, so reordering this array is the only edit a reshuffle
+   needs and the numbering can never disagree with the running order. */
 const CASE_STUDIES = [
   {
-    index: "01",
-    slug: "/case-studies/expedition-33",
-    kicker: "Clair Obscur: Expedition 33 / Product and Interactive Systems",
-    accent: "#8e1a2b",
-    title: "The kinetic turn: eliminating the engagement cliff",
-    question: "How does a turn-based system stay engaging when the user isn’t acting?",
-    dek: "A systems dossier on Sandfall Interactive’s combat loop, where real-time inputs make passive turns feel active under strict resource constraints.",
+    slug: "/case-studies/epf-claims",
+    kicker: "EPF Claims / Public Infrastructure Product",
+    accent: "#ffb020",
+    title: "One in five people are told no when asking for their own money",
+    question: "How might a member know a claim will fail before they file it?",
+    dek: "An India-specific breakdown of why 1.74 crore provident fund claims were rejected in a single year, and why almost none of it was a decision about eligibility.",
     metrics: [
-      { k: "Active screen time", v: "98%" },
-      { k: "Early-funnel churn", v: "−34%" },
-      { k: "Interaction", v: "Loop visualiser" },
+      { k: "Claims filed", v: "7.96 cr" },
+      { k: "Rejected", v: "1.74 cr" },
+      { k: "Rejection rate", v: "~22%" },
     ],
-    cta: "Read the systems breakdown",
+    cta: "Read the EPF claims breakdown",
   },
   {
-    index: "02",
     slug: "/case-studies/steam-discovery",
     kicker: "Steam Discovery / Marketplace Product Strategy",
     accent: "#66c0f4",
@@ -36,19 +38,24 @@ const CASE_STUDIES = [
     cta: "Read the Steam discovery study",
   },
   {
-    index: "03",
-    slug: "/case-studies/epf-claims",
-    kicker: "EPF Claims / Public Infrastructure Product",
-    accent: "#ffb020",
-    title: "One in five people are told no when asking for their own money",
-    question: "How might a member know a claim will fail before they file it?",
-    dek: "An India-specific breakdown of why 1.74 crore provident fund claims were rejected in a single year, and why almost none of it was a decision about eligibility.",
+    slug: "/case-studies/expedition-33",
+    kicker: "Clair Obscur: Expedition 33 / Product and Interactive Systems",
+    accent: "#8e1a2b",
+    title: "The kinetic turn: eliminating the engagement cliff",
+    question: "How does a turn-based system stay engaging when the user isn’t acting?",
+    dek: "A systems dossier on Sandfall Interactive’s combat loop, where real-time inputs make passive turns feel active under strict resource constraints.",
+    /* These were "Active screen time 98%" and "Early-funnel churn −34%".
+       Both were removed: Sandfall has never published player telemetry, so
+       neither number had a source, and the case study itself states it has no
+       access to internal data. Descriptive labels replace them rather than
+       substitute numbers, since an unsourced figure is what caused the
+       problem in the first place. */
     metrics: [
-      { k: "Claims filed", v: "7.96 cr" },
-      { k: "Rejected", v: "1.74 cr" },
-      { k: "Rejection rate", v: "~22%" },
+      { k: "Analysis", v: "Independent" },
+      { k: "Mechanic", v: "Real-time parry" },
+      { k: "Interaction", v: "Loop visualiser" },
     ],
-    cta: "Read the EPF claims breakdown",
+    cta: "Read the systems breakdown",
   },
 ];
 
@@ -93,45 +100,56 @@ function HeroLine({ text, start = 0 }: { text: string; start?: number }) {
 export default function HomePage() {
   return (
     <div className="bg-[var(--page-bg)] text-[var(--page-fg)] theme-global">
-      {/* ---------------------------------------------------------------- HERO */}
-      <section className="px-6 sm:px-8 max-w-5xl mx-auto pt-20 sm:pt-28 pb-20">
-        <h1 className="font-editorial font-normal tracking-tight leading-[1.02] text-[3.4rem] sm:text-8xl">
-          <HeroLine text="Vishwaraj" />
-          <HeroLine text="Saxena" start={1} />
-        </h1>
+      {/* ---------------------------------------------------------------- HERO
+          A dark masthead, inverted via .invert-dark so the markup below still
+          reads the ordinary --page-* tokens. The light curtain is additive and
+          only resolves on a dark ground, which is why this band is olive-black
+          while the rest of the page stays beige. */}
+      <section className="invert-dark relative isolate overflow-hidden bg-[var(--page-bg)] text-[var(--page-fg)]">
+        <div className="absolute inset-0 -z-10">
+          <HeroCurtain />
+        </div>
 
-        <p
-          className="rise mt-8 max-w-2xl text-xl sm:text-2xl font-editorial italic leading-snug"
-          style={{ animationDelay: "0.4s" }}
-        >
-          Product Portfolio
-        </p>
+        {/* The content layer lets pointer events fall through to the canvas so
+            the band tracks the cursor across the whole masthead; only the two
+            links take the pointer back. */}
+        <div className="pointer-events-none relative px-6 sm:px-8 max-w-5xl mx-auto pt-24 sm:pt-36 pb-28 sm:pb-36">
+          <h1 className="font-editorial font-normal tracking-tight leading-[1.02] text-[3.4rem] sm:text-8xl">
+            <HeroLine text="Vishwaraj" />
+            <HeroLine text="Saxena" start={1} />
+          </h1>
 
-        <p
-          className="rise mt-5 max-w-xl text-base leading-relaxed text-[var(--page-fg-muted)] font-sans"
-          style={{ animationDelay: "0.5s" }}
-        >
-          Selected product case studies and shipped work.
-        </p>
-
-        <div
-          className="rise mt-8 flex flex-wrap items-center gap-3"
-          style={{ animationDelay: "0.6s" }}
-        >
-          <a
-            href="#work"
-            className="btn-premium inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--page-accent)] text-[var(--page-accent-fg)] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[var(--page-accent-hover)]"
+          <p
+            className="rise mt-8 max-w-2xl text-xl sm:text-2xl font-editorial italic leading-snug"
+            style={{ animationDelay: "0.4s" }}
           >
-            <span>View the Work</span>
-            <ArrowRight className="w-4 h-4" />
-          </a>
-          <Link
-            href="/resume"
-            className="btn-premium inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--page-border)] text-[var(--page-fg)] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[var(--page-bg-alt)]"
+            Product Portfolio
+          </p>
+
+          {/* Was "Selected product case studies and shipped work." — the site
+              shows no shipped work, so that half was an unsupported claim.
+              Replaced with the current role, which is both true and the thing
+              a reader most wants to know within the first few seconds. */}
+          <p
+            className="rise mt-5 max-w-xl text-base leading-relaxed text-[var(--page-fg-muted)] font-sans"
+            style={{ animationDelay: "0.5s" }}
           >
-            <FileText className="w-4 h-4" />
-            <span>Resume</span>
-          </Link>
+            Product intern at Leap. Independent breakdowns of consumer and public product
+            systems.
+          </p>
+
+          <div
+            className="rise mt-8 flex flex-wrap items-center gap-3"
+            style={{ animationDelay: "0.6s" }}
+          >
+            <a
+              href="#work"
+              className="btn-premium pointer-events-auto inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--page-accent)] text-[var(--page-accent-fg)] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[var(--page-accent-hover)]"
+            >
+              <span>View the Work</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
         </div>
       </section>
 
@@ -148,7 +166,7 @@ export default function HomePage() {
         </div>
 
         <div>
-          {CASE_STUDIES.map((cs) => (
+          {CASE_STUDIES.map((cs, i) => (
             <article
               key={cs.slug}
               className="reveal border-t border-[var(--page-border)] first:border-t-0"
@@ -159,7 +177,7 @@ export default function HomePage() {
               >
                 <div className="lg:col-span-2 flex lg:flex-col items-center lg:items-start gap-3">
                   <span className="font-editorial text-4xl text-[var(--page-fg-muted)] transition-colors group-hover:text-[var(--page-fg)]">
-                    {cs.index}
+                    {String(i + 1).padStart(2, "0")}
                   </span>
                   <span
                     className="inline-block w-2.5 h-2.5 rounded-full transition-transform duration-300 group-hover:scale-[1.6]"
@@ -270,18 +288,14 @@ export default function HomePage() {
             </p>
 
             <div className="pt-3 flex flex-wrap items-center gap-3">
-              <Link
-                href="/resume"
-                className="btn-premium inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--page-accent)] text-[var(--page-accent-fg)] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[var(--page-accent-hover)]"
-              >
-                <span>Full resume</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              {/* "Full resume" removed while the resume is reworked. LinkedIn
+                  takes the primary fill so this block still has an anchor
+                  rather than two equal-weight outlined buttons. */}
               <a
                 href="https://www.linkedin.com/in/vishwarajsaxena/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-premium inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg border border-[var(--page-border)] font-mono text-xs uppercase tracking-wider font-semibold text-[var(--page-fg)] hover:bg-[var(--page-bg-alt)]"
+                className="btn-premium inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-[var(--page-accent)] text-[var(--page-accent-fg)] font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[var(--page-accent-hover)]"
               >
                 <span>LinkedIn</span>
                 <ArrowUpRight className="w-4 h-4 opacity-70" />

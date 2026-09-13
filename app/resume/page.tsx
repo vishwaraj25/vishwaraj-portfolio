@@ -131,8 +131,8 @@ export default function ResumePage() {
               <p className="text-sm text-[var(--page-fg-muted)] font-sans leading-relaxed">
                 Formulated a Product Strategy Dossier and Mini-PRD on Sandfall Interactive’s
                 innovative battle loop. Analysed player segmentation across action gamers, hybrid
-                RPGs, and purists to demonstrate how real-time reactive defence (120ms parry windows)
-                eliminates passive enemy-turn downtime under severe indie team, budget, and engine
+                RPGs, and purists to argue how real-time reactive defence (tight parry windows)
+                reduces passive enemy-turn downtime under severe indie team, budget, and engine
                 constraints. Built an interactive 6-stage battle loop simulator and reflex tester.
               </p>
               <div className="flex items-center gap-2 pt-1 no-print">

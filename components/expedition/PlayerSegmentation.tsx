@@ -10,12 +10,14 @@ export function PlayerSegmentation() {
       archetype: "Action-Oriented Players",
       icon: Flame,
       coreNeed: "Kinetic stimulation, immediate reflex feedback, zero downtime.",
-      churnRisk: "HIGH in first 90 minutes",
+      churnRisk: "HIGH in the opening hours",
       churnTrigger:
         "Passive enemy turn animations where player cannot press buttons cause boredom and immediate drop-off.",
       expeditionSolution:
         "Real-time parry/dodge windows turn enemy turns into active reflex tests, satisfying the craving for kinetic skill expression.",
-      retentionDelta: "+48% Chapter 1 Completion",
+      /* Was "+48% Chapter 1 Completion" — invented telemetry. Sandfall has
+         published no per-segment retention data. */
+      retentionDelta: "Removes the dead-turn drop-off",
       badgeColor: "bg-white text-[var(--page-accent-fg)] font-bold",
     },
     {
@@ -27,7 +29,8 @@ export function PlayerSegmentation() {
         "Excessive random encounters and bullet-sponge bosses with sluggish turn pacing.",
       expeditionSolution:
         "Counters directly build Action Points and stagger gauges, shortening battle duration and rewarding mechanical proficiency.",
-      retentionDelta: "+32% Session Length",
+      /* Was "+32% Session Length" — invented telemetry. */
+      retentionDelta: "Shortens battles without losing depth",
       badgeColor: "bg-white/20 text-white font-semibold",
     },
     {
@@ -103,7 +106,9 @@ export function PlayerSegmentation() {
               </div>
 
               <div className="pt-3 border-t border-white/15 flex items-center justify-between text-xs font-mono">
-                <span className="text-white/70">Outcome:</span>
+                {/* "Outcome" asserted a measured result. These are arguments
+                    this analysis makes, not observed effects. */}
+                <span className="text-white/70">Expected effect:</span>
                 <span className="text-white font-bold">{seg.retentionDelta}</span>
               </div>
             </motion.div>

@@ -13,9 +13,7 @@
 .eyebrow { color:#90a8bc; font-size:12px; line-height:1.6; margin-bottom:14px!important; }
 .hero h1 { font-size:clamp(28px,3.6vw,44px); line-height:1.18; font-weight:550; max-width:36ch; letter-spacing:-.025em; }
 .lead,.body { font-size:17px; line-height:1.7; color:#afbecb; max-width:64ch; margin-top:20px!important; }
-.firstProof { display:flex; align-items:baseline; gap:16px; margin-top:28px!important; }
-.firstProof strong { font-size:28px; font-weight:550; }
-.firstProof span { color:#9fb3c3; font-size:15px; }
+
 .source { font-size:12px; line-height:1.65; color:#8198aa; margin-top:18px!important; max-width:88ch; }
 .reading { max-width:64ch; }
 .library { position:relative; height:320px; perspective:1100px; overflow:hidden; margin-top:28px; }
@@ -111,7 +109,7 @@
 @media(max-width:700px) {
  .nav,.hero,.supply,.attention,.momentum,.experience,.opportunity { padding-left:22px; padding-right:22px; }
  .hero { padding-top:28px; } .hero h1 { font-size:clamp(27px,5.6vw,36px); line-height:1.2; } .page h2 { font-size:28px; } .page h3 { font-size:22px; }
- .lead,.body { font-size:16px; line-height:1.7; } .firstProof { flex-wrap:wrap; gap:8px 12px; } .firstProof strong { font-size:28px; } .firstProof span { font-size:13px; }
+ .lead,.body { font-size:16px; line-height:1.7; }
  .library { height:240px; } .coverField { width:180%; margin-left:-40%; gap:10px; transform:rotateX(45deg) rotateZ(-12deg) translateY(-20px); }
  .supply,.momentum { padding-top:40px; } .releaseYears { gap:12px; } .yearHeading strong { font-size:24px; } .yearHeading { gap:6px; } .yearHeading small { font-size:10px; } .releaseTiles { grid-template-columns:repeat(8,minmax(0,1fr)); gap:3px; }
  .logic { flex-direction:column; align-items:start; gap:12px; margin-top:32px; } .logic svg { transform:rotate(90deg); }

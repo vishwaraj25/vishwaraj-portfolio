@@ -1,15 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Barcode,
-  Package,
-  Bike,
-  MapPin,
-  Clock,
-  AlertCircle,
-  CheckCircle,
-} from "lucide-react";
+import { Barcode, Package, Bike, MapPin, AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface FunnelStage {

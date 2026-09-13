@@ -24,7 +24,7 @@ export function TradeoffMatrix() {
       dimension: "Rider Batching Efficiency",
       speedModel: "Single-drop priority (1.1 orders/trip)",
       bufferModel: "Algorithmic multi-order batching (1.8–2.2 orders/trip)",
-      note: "Buffer window enables cluster bundling, dropping per-order delivery cost by 32%.",
+      note: "Buffer window enables cluster bundling, lowering per-order delivery cost.",
     },
     {
       dimension: "Rider Safety & Attrition",
@@ -34,8 +34,10 @@ export function TradeoffMatrix() {
     },
     {
       dimension: "Customer LTV & Repeat Rate",
-      speedModel: "High churn on delayed tail orders (-18%)",
-      bufferModel: "Strong trust cohort retention (+23%)",
+      /* Dropped the -18% / +23% figures: a queuing model cannot yield a
+         retention number, so these had nothing behind them even as estimates. */
+      speedModel: "High churn on delayed tail orders",
+      bufferModel: "Stronger trust cohort retention",
       note: "Users forgive an 18-minute delivery; they abandon apps that fail 10-minute promises.",
     },
   ];
@@ -52,6 +54,13 @@ export function TradeoffMatrix() {
         <p className="text-sm text-white/85 mt-1 max-w-2xl font-sans">
           Comparing the unit economics, operational viability, and customer psychology of
           the Aggressive Speed vs. Predictability Buffer frameworks.
+        </p>
+        {/* The page header carries this caveat, but a reader landing mid-page
+            sees only the table. Figures like "1.1 orders/trip" or "-18%" read
+            as Swiggy operational data unless it is said here too. */}
+        <p className="text-[11px] font-mono text-white/70 mt-3 max-w-2xl leading-relaxed">
+          Every figure in this table is output from a simple model built for this piece. None of
+          it is Swiggy operational data, and none of it is a measured result.
         </p>
       </div>
 

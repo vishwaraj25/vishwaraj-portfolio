@@ -5,17 +5,12 @@ import {
   Clock,
   AlertTriangle,
   CheckCircle2,
-  TrendingDown,
-  ShieldCheck,
-  Zap,
   Sliders,
   CloudRain,
   ShoppingBag,
   Bike,
-  PackageCheck,
   Sparkles,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 type ModelMode = "aggressive" | "predictable";
 
@@ -422,11 +417,15 @@ export function ReliabilitySimulator({ className = "" }: SimulatorProps) {
               </div>
 
               <div className="shrink-0 text-right sm:border-l sm:border-white/20 sm:pl-5">
+                {/* A queuing model produces delivery-time distributions; it
+                    cannot produce a retention delta. Those figures needed
+                    behavioural data nobody here has, so the readout now states
+                    the direction the model argues for, not a percentage. */}
                 <div className="text-[10px] font-mono text-white/70 uppercase">
-                  Net Repeat Retention
+                  Modelled repeat effect
                 </div>
                 <div className="text-lg font-mono font-bold text-white">
-                  {mode === "aggressive" ? "-18% Repeat" : "+24% Retention"}
+                  {mode === "aggressive" ? "Erodes repeat use" : "Builds repeat use"}
                 </div>
               </div>
             </div>

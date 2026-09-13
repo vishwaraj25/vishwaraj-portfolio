@@ -1,17 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Brain,
-  Sword,
-  Eye,
-  ShieldAlert,
-  Zap,
-  RotateCcw,
-  Sparkles,
-  ArrowRight,
-  ChevronRight,
-} from "lucide-react";
+import { Brain, Sword, Eye, ShieldAlert, Zap, RotateCcw, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface CombatStage {
@@ -93,11 +83,15 @@ const COMBAT_STAGES: CombatStage[] = [
     classicRpgFlaw:
       "Defense was historically passive: a math formula (Defense Stat - Enemy Attack). Player had zero control over whether they took 400 HP damage.",
     expeditionSolution:
-      "Real-time reflex inputs: Dodge (wide window, complete evasion) vs. Perfect Parry (tight 120ms window, builds Action Points & triggers immediate counter-attack).",
+      /* Dropped a specific "120ms" figure: Sandfall has not published frame
+         data, so the precise value was not attributable. */
+      "Real-time reflex inputs: Dodge (wide window, complete evasion) vs. Perfect Parry (tight window, builds Action Points & triggers immediate counter-attack).",
     gameplayConsequence:
       "Player skill can nullify damage regardless of stat deficiencies; converts enemy turn into a player counter-attack opportunity.",
+    /* "Directly solves early-game churn" asserted a proven effect with no
+       measurement behind it. Reworded to state the argument as an argument. */
     productMetricImpact:
-      "Directly solves early-game churn for Action-Oriented and Hybrid RPG cohorts.",
+      "Argues against early-game drop-off for Action-Oriented and Hybrid RPG cohorts.",
   },
   {
     id: "feedback",
@@ -159,7 +153,8 @@ export function CombatLoopVisualizer() {
 
         <div className="flex items-center gap-2 bg-white/15 px-4 py-2 rounded-full border border-white/30 text-xs font-mono text-white shrink-0">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>Active Duty Cycle: 98%</span>
+          {/* Was "Active Duty Cycle: 98%" — an invented telemetry figure. */}
+          <span>Player input on every turn</span>
         </div>
       </div>
 

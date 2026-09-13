@@ -2,25 +2,11 @@
 
 import React from "react";
 import Link from "next/link";
-import {
-  ArrowLeft,
-  Clock,
-  CheckCircle2,
-  AlertOctagon,
-  ShieldCheck,
-  TrendingUp,
-  BarChart3,
-  Share2,
-  Calendar,
-  Layers,
-  Sparkles,
-  ShoppingBag,
-} from "lucide-react";
+import { ArrowLeft, Clock, ShieldCheck, BarChart3, ShoppingBag } from "lucide-react";
 import { motion } from "framer-motion";
 import { ReliabilitySimulator } from "@/components/swiggy/ReliabilitySimulator";
 import { DarkStoreFunnel } from "@/components/swiggy/DarkStoreFunnel";
 import { TradeoffMatrix } from "@/components/swiggy/TradeoffMatrix";
-import { CollapsibleEvidence } from "@/components/ui/CollapsibleEvidence";
 
 export default function SwiggyInstamartPage() {
   return (
