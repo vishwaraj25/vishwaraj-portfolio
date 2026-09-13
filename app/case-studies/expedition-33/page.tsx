@@ -14,6 +14,7 @@ import { ConstraintDossier } from "@/components/expedition/ConstraintDossier";
 import { GameGallery } from "@/components/expedition/GameGallery";
 import styles from "./expedition.module.css";
 import { useDossierMotion } from "@/components/expedition/useDossierMotion";
+import HeroLeaves from "@/components/expedition/HeroLeaves";
 
 export default function Expedition33Page() {
   const dossierRef = useDossierMotion();
@@ -30,7 +31,7 @@ export default function Expedition33Page() {
             <span>Back to Work</span>
           </Link>
           <div className="flex items-center gap-3 text-white/80">
-            <span>Dossier 02</span>
+            <span>Dossier 03</span>
             <span>/</span>
             <span className="font-bold text-white">Game Systems PM</span>
           </div>
@@ -39,7 +40,23 @@ export default function Expedition33Page() {
 
       {/* Hero Dossier Header */}
       <header className={`${styles.hero} pb-16 px-6 sm:px-8 border-b`}>
-        <div className="max-w-5xl mx-auto space-y-6">
+        {/* Sits between the key art and the copy. aria-hidden and
+            pointer-events-none: it is atmosphere, not content, and must never
+            intercept a click meant for the text above it.
+
+            z-0 rather than -z-10 deliberately. A negative z-index child paints
+            behind its parent's own background in some stacking situations, and
+            .hero paints the key art plus two scrims on itself — so a negative
+            layer is the one arrangement that can silently render nothing.
+            z-0 sits above that background, and the copy below takes z-10. */}
+        <div
+          className="pointer-events-none absolute inset-0 z-0"
+          aria-hidden="true"
+        >
+          <HeroLeaves />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto space-y-6">
           <div className={styles.metadata}>
             <span>Clair Obscur: Expedition 33</span>
             <span>Game Product / Combat Design</span>
@@ -95,24 +112,32 @@ export default function Expedition33Page() {
           {/* Key Metric Strip */}
           <div className="pt-6">
             <div className="p-6 rounded-3xl bg-white/10 border border-white/25 shadow-xl backdrop-blur-md">
+              {/* This strip previously read "Mechanical & Product Strategy
+                  Outcomes" and led with "Active Screen Time 98%" and "Early
+                  Funnel Churn -34%". Neither had a source, and both are
+                  internal telemetry Sandfall has never published — which
+                  directly contradicted the scope note above stating this
+                  analysis has no access to internal data. They are replaced
+                  with claims observable in the shipped game, and the heading
+                  now says what these actually are. */}
               <div className="text-[11px] font-mono uppercase text-white/80 tracking-wider font-bold mb-4">
-                Mechanical & Product Strategy Outcomes
+                Independent design assessment · observed in the shipped game, not measured outcomes
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div>
-                  <div className="text-xs text-white/70 font-mono">Active Screen Time</div>
+                  <div className="text-xs text-white/70 font-mono">Enemy Turns</div>
                   <div className="text-2xl sm:text-3xl font-mono font-bold text-white mt-1">
-                    98%
+                    Interactive
                   </div>
-                  <div className="text-xs text-white/80 mt-0.5">Continuous cognitive lock</div>
+                  <div className="text-xs text-white/80 mt-0.5">Dodge/parry prompt on incoming attacks</div>
                 </div>
 
                 <div>
-                  <div className="text-xs text-white/70 font-mono">Early Funnel Churn</div>
+                  <div className="text-xs text-white/70 font-mono">Early Drop-off</div>
                   <div className="text-2xl sm:text-3xl font-mono font-bold text-white mt-1">
-                    -34%
+                    Hypothesis
                   </div>
-                  <div className="text-xs text-white/80 mt-0.5">First 2 hours drop-off</div>
+                  <div className="text-xs text-white/80 mt-0.5">Argued here, not measured</div>
                 </div>
 
                 <div>
@@ -124,7 +149,7 @@ export default function Expedition33Page() {
                 </div>
 
                 <div>
-                  <div className="text-xs text-white/70 font-mono">TAM Expansion</div>
+                  <div className="text-xs text-white/70 font-mono">Positioning</div>
                   <div className="text-2xl sm:text-3xl font-mono font-bold text-white mt-1">
                     Hybrid RPG
                   </div>
@@ -164,8 +189,8 @@ export default function Expedition33Page() {
             <p>
               Under these constraints, expanding scope with open-world sandboxes, complex side
               activities, or full action-combat collision physics was impossible. Every engineering
-              resource had to concentrate on the single loop where players spend 80% of their
-              playtime: <em>the battle sequence</em>.
+              resource had to concentrate on the loop players spend most of their playtime in:{" "}
+              <em>the battle sequence</em>.
             </p>
           </div>
 
@@ -257,7 +282,7 @@ export default function Expedition33Page() {
                   <strong>Dodge (Broad Window):</strong> Completely evades damage, safe option.
                 </div>
                 <div className="p-3.5 rounded-xl bg-white text-[var(--page-accent-fg)] font-bold shadow-md">
-                  <strong>Perfect Parry (120ms Window):</strong> 0 damage, +1 Action Point, and
+                  <strong>Perfect Parry (tight window):</strong> 0 damage, +1 Action Point, and
                   cinematic counter-attack!
                 </div>
               </div>
