@@ -3,6 +3,8 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { GameLibrary, ReleaseStory, ConcentrationStory, Storefront } from "@/components/steam/DiscoveryEvidence";
 import s from "./steam.module.css";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export default function SteamDiscoveryPage() {
   return (
     <article className={`theme-steam ${s.page}`}>
@@ -50,11 +52,11 @@ export default function SteamDiscoveryPage() {
         </div>
         <div className={s.comparison}>
           <div className={s.fictionalGame}>
-            <div className={s.gameArt} style={{ backgroundImage: "url(/images/steam-discovery/cover-1245620.jpg)" }} role="img" aria-label="ELDEN RING cover, used as illustrative artwork" />
+            <div className={s.gameArt} style={{ backgroundImage: `url(${basePath}/images/steam-discovery/cover-1245620.jpg)` }} role="img" aria-label="ELDEN RING cover, used as illustrative artwork" />
             <div><span className={s.eyebrow}>Illustrative scenario / Existing audience</span><h3>ELDEN RING</h3><p>Existing interest gives players a reason to look. Engagement can begin before the discovery window opens.</p></div>
           </div>
           <div className={`${s.fictionalGame} ${s.quietGame}`}>
-            <div className={s.gameArt} style={{ backgroundImage: "url(/images/steam-discovery/cover-367520.jpg)" }} role="img" aria-label="Hollow Knight cover, used as illustrative artwork" />
+            <div className={s.gameArt} style={{ backgroundImage: `url(${basePath}/images/steam-discovery/cover-367520.jpg)` }} role="img" aria-label="Hollow Knight cover, used as illustrative artwork" />
             <div><span className={s.eyebrow}>Illustrative scenario / Low visibility</span><h3>Hollow Knight</h3><p>A relevant game first needs to be noticed. It enters the same discovery window with less initial attention.</p></div>
           </div>
         </div>

@@ -5,6 +5,8 @@ import { ArrowDown, ArrowLeft, ArrowUpRight } from "lucide-react";
 import { LegacyGarage } from "./legacy-garage";
 import s from "./study.module.css";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const metadata: Metadata = {
   title: "Real Racing 3: The Last Lap | Vishwaraj Saxena",
   description: "An independent product study of how a long-running live-service game can preserve player identity when the service ends.",
@@ -43,7 +45,7 @@ export default function RealRacingLegacyStudy() {
       <header className={s.hero}>
         <Image
           className={s.heroImage}
-          src="/rr3/legacy-garage-hero.png"
+          src={`${basePath}/rr3/legacy-garage-hero.png`}
           alt="A dark archival garage with a long collection of performance cars"
           fill
           priority

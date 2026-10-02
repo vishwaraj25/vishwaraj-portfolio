@@ -11,6 +11,7 @@ const years = [
   { year: "2025", count: 21308, label: "21,308", note: "releases" },
   { year: "2026", count: 18135, label: "18,135", note: "year to date" },
 ];
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 function useMotionReady() {
   const [ready, setReady] = useState(false);
@@ -29,7 +30,7 @@ function LibraryCover({ index, pointerX, pointerY, progress, active }: { index: 
   const y = useTransform(pointerY, value => value * (attended ? -2 : -.7));
   const z = useTransform(progress, [0, 1], [depth, attended ? 70 : -22]);
   return <motion.div className={`${s.cover} ${attended ? s.attended : ""}`}
-    style={{ backgroundImage: `url(/images/steam-discovery/cover-${covers[index % covers.length]}.jpg)`, x: active ? x : 0, y: active ? y : 0, z: active ? z : depth }} />;
+    style={{ backgroundImage: `url(${basePath}/images/steam-discovery/cover-${covers[index % covers.length]}.jpg)`, x: active ? x : 0, y: active ? y : 0, z: active ? z : depth }} />;
 }
 
 export function GameLibrary() {

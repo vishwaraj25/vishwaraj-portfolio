@@ -28,4 +28,6 @@ export const discoveryGames: DiscoveryGame[] = [
   { id: "730", title: "Counter-Strike 2", gameplay: "Strategy", mood: "Intense", sessions: ["Short session", "An evening"], tags: ["Competitive", "Tactical", "Team play"], description: "Coordinate with a team in tactical, round-based competitive matches." },
 ];
 
-export const coverFor = (id: string) => `/images/steam-discovery/cover-${id}.jpg`;
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+export const coverFor = (id: string) => `${basePath}/images/steam-discovery/cover-${id}.jpg`;
