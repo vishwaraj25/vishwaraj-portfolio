@@ -101,7 +101,7 @@ export function DarkStoreFunnel() {
             Where Does Delivery Variance Actually Compound?
           </h3>
           <p className="text-sm text-white/85 mt-1 max-w-2xl font-sans">
-            Quick-commerce is not a software game—it is physical inventory moving through tight
+            Quick-commerce is not a software game. It is physical inventory moving through tight
             human bottlenecks. Select each stage to inspect variance drivers.
           </p>
         </div>

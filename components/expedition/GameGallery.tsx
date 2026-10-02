@@ -32,7 +32,7 @@ const SCREENSHOTS: GameScreenshot[] = [
     caption:
       "Surreal ruins of Belle Époque Paris rendered in Unreal Engine 5 with dynamic volumetric lighting.",
     designAnalysis:
-      "Sandfall chose a linear, high-fidelity path rather than a sprawling empty open world—concentrating their UE5 rendering budget into breathtaking, handcrafted vistas.",
+      "Sandfall chose a linear, high-fidelity path rather than a sprawling empty open world, concentrating their UE5 rendering budget into breathtaking, handcrafted vistas.",
   },
   {
     id: "screen-3",

@@ -22,23 +22,23 @@ import { RouteTheme } from "@/components/system/RouteTheme";
 import { ScrollProgress } from "@/components/system/ScrollProgress";
 
 export const metadata: Metadata = {
-  title: "Vishwaraj Saxena — Product Portfolio",
+  title: "Vishwaraj Saxena | Product Portfolio",
   description:
-    "Product portfolio of Vishwaraj Saxena. Deep, interactive product breakdowns of quick-commerce reliability, turn-based combat systems, and language-learning engagement. Don't just show what I built. Show how I think.",
+    "Product portfolio of Vishwaraj Saxena. Interactive product studies of game discovery, live-service strategy, player trust, and product decision-making.",
   keywords: [
     "Vishwaraj Saxena",
     "Product Manager",
     "Product Portfolio",
-    "Swiggy Instamart",
-    "Expedition 33",
-    "Duolingo",
+    "Steam Discovery",
+    "Real Racing 3",
+    "Live-Service Strategy",
     "Product Teardown",
   ],
   authors: [{ name: "Vishwaraj Saxena" }],
   openGraph: {
-    title: "Vishwaraj Saxena — Product Portfolio",
+    title: "Vishwaraj Saxena | Product Portfolio",
     description:
-      "Interactive product breakdowns — the decisions, mechanics, and user behaviours that make products work.",
+      "Interactive product breakdowns of the decisions, mechanics, and user behaviours that make products work.",
     type: "website",
   },
 };

@@ -45,11 +45,11 @@ export function Footer() {
             <ul className="space-y-3 text-sm font-sans">
               <li>
                 <Link
-                  href="/case-studies/expedition-33"
+                  href="/case-studies/real-racing-legacy"
                   className="group block"
                 >
-                  <span className="font-medium group-hover:underline">Clair Obscur: Expedition 33</span>
-                  <span className={`block text-xs font-mono mt-0.5 ${c.footerFaint}`}>Combat Loop</span>
+                  <span className="font-medium group-hover:underline">Real Racing 3: The Last Lap</span>
+                  <span className={`block text-xs font-mono mt-0.5 ${c.footerFaint}`}>Live-Service Sunset</span>
                 </Link>
               </li>
             </ul>

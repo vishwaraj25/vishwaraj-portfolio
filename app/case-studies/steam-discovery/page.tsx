@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { GameLibrary, ReleaseStory, ConcentrationStory, Storefront } from "@/components/steam/DiscoveryEvidence";
 import s from "./steam.module.css";
-import { TasteDiscoveryDemo } from "@/components/steam/TasteDiscoveryDemo";
 
 export default function SteamDiscoveryPage() {
   return (
@@ -85,10 +84,6 @@ export default function SteamDiscoveryPage() {
           <div><dt>Steam</dt><dd>Better matching could create more meaningful discovery without simply showing users more games.</dd></div>
         </dl>
         <p className={s.hmw}>How might Steam increase discovery of relevant, previously unseen games without reducing recommendation quality?</p>
-      </section>
-      <section className={s.solution} aria-labelledby="solution-title">
-        <div className={s.solutionIntro}><p className={s.eyebrow}>A proposed discovery surface inside Steam</p><h2 id="solution-title">Taste Discovery</h2><p className={s.body}>Player intent → curated queue → feedback → adapted recommendations.</p></div>
-        <TasteDiscoveryDemo />
       </section>
       <section className={s.analysis} aria-labelledby="ranking-title">
         <p className={s.eyebrow}>Behind the proposed experience</p><h2 id="ranking-title">Balance relevance with an opportunity to be seen.</h2>

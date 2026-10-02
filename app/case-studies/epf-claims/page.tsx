@@ -6,7 +6,7 @@ import { ClaimReadyDemo } from "@/components/epf/ClaimReadyDemo";
 import s from "./epf.module.css";
 
 export const metadata: Metadata = {
-  title: "EPF claims — Vishwaraj Saxena",
+  title: "EPF Claims | Vishwaraj Saxena",
   description:
     "An independent product breakdown of why roughly one in five EPF withdrawal claims is rejected, and a pre-submission readiness check that would catch the causes before filing.",
 };

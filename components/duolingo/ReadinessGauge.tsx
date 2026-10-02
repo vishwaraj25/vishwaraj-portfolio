@@ -84,7 +84,7 @@ export function ReadinessGauge() {
       {/* Bars */}
       <div className="space-y-2.5 font-mono text-xs w-full">
         <div className="text-[10px] uppercase tracking-wide text-[var(--page-fg-muted)] mb-1">
-          Real-World Readiness — Spanish
+          Real-World Readiness: Spanish
         </div>
         {DIMS.map((d, i) => (
           <div key={d.k} className="flex items-center gap-3">
@@ -101,8 +101,8 @@ export function ReadinessGauge() {
           </div>
         ))}
         <p className="text-[10px] text-[var(--page-fg-muted)] pt-1 leading-relaxed normal-case">
-          Never “72% fluent” — “across the scenarios you’ve practised, you’re performing at this
-          level.”
+          Never “72% fluent.” Instead: “across the scenarios you’ve practised, you’re performing
+          at this level.”
         </p>
       </div>
     </div>

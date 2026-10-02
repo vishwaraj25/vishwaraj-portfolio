@@ -32,7 +32,7 @@ const PHASES: Phase[] = [
     icon: MessagesSquare,
     today: "The learner earns XP and moves to the next lesson. Knowledge is never stress-tested.",
     realWorld:
-      "A personalised AI mission drops the learner into a realistic situation — order breakfast, check into a hotel, where they have to produce language rather than pick an option.",
+      "A personalised AI mission drops the learner into a realistic situation, such as ordering breakfast or checking into a hotel, where they have to produce language rather than pick an option.",
     signal: "Which scenarios attempted, hint usage, words actually spoken.",
   },
   {

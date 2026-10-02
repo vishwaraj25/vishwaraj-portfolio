@@ -4,13 +4,15 @@
  * (Header / Footer) so navigation, homepage and case studies stay in
  * their own visual lane.
  */
-export type ThemeName = "global" | "swiggy" | "expedition" | "duolingo" | "steam" | "epf";
+export type ThemeName = "global" | "swiggy" | "expedition" | "duolingo" | "steam" | "epf" | "pvz" | "racing";
 
 export function isCaseStudyRoute(pathname: string): boolean {
   return pathname === "/case-studies" || pathname.startsWith("/case-studies/");
 }
 
 export function getThemeName(pathname: string): ThemeName {
+  if (pathname.startsWith("/case-studies/real-racing-legacy")) return "racing";
+  if (pathname.startsWith("/case-studies/pvz2-player-trust")) return "pvz";
   if (pathname.startsWith("/case-studies/steam-discovery")) return "steam";
   if (pathname.startsWith("/case-studies/epf-claims")) return "epf";
   if (pathname.startsWith("/case-studies/swiggy-instamart")) return "swiggy";
@@ -121,6 +123,29 @@ const DUOLINGO: ChromeTheme = {
 };
 
 const MAP: Record<ThemeName, ChromeTheme> = {
+  racing: {
+    barScrolled: "bg-[#0b0d0f] border-b border-[#30353a] text-[#f2f3f3]",
+    barTop: "bg-[#0b0d0f] border-b border-[#30353a] text-[#f2f3f3]",
+    brand: "text-[#f2f3f3] hover:text-white",
+    tag: "text-[#a9afb4]",
+    dot: "bg-[#e43b32]",
+    navLink: "text-[#a9afb4] hover:text-white",
+    activeLink: "text-[#e43b32]",
+    divider: "bg-[#30353a]",
+    pill: "bg-[#15181b] text-[#f2f3f3] border border-[#30353a]",
+    dropdown: "bg-[#15181b] border-[#30353a] text-[#f2f3f3]",
+    dropdownItemHover: "hover:bg-[#202428]",
+    drawer: "bg-[#0b0d0f] text-[#f2f3f3]",
+    footerBg: "bg-[#0b0d0f] text-[#f2f3f3]",
+    footerRule: "border-[#30353a]",
+    footerFaint: "text-[#a9afb4]",
+    footerChip: "bg-[#15181b] text-[#f2f3f3] border border-[#30353a]",
+  },
+  pvz: {
+    ...DUOLINGO,
+    footerBg: "bg-[#173d27] text-[#f8faf2]",
+    footerRule: "border-[#426347]",
+  },
   steam: {
     barScrolled: "bg-[#07111d] border-b border-[#1f3a52] text-[#dbe9f4]",
     barTop: "bg-[#07111d] border-b border-[#1f3a52] text-[#dbe9f4]",

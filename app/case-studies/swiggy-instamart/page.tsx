@@ -153,7 +153,7 @@ export default function SwiggyInstamartPage() {
             <p>
               When an app promises delivery in 11 minutes, the customer immediately plans their
               immediate schedule around that number. If the order arrives in 19 minutes, the
-              customer does not celebrate the 19 minutes—they experience a broken contract, a feeling
+              customer does not celebrate the 19 minutes. They experience a broken contract, a feeling
               of deceit, and the frustration of watching the ETA tick up 3 times.
             </p>
           </div>

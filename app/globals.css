@@ -122,6 +122,23 @@ body:has(.theme-epf) {
   --page-selection-fg: #f7f7f8;
 }
 
+[data-theme="racing"],
+.theme-racing,
+body:has(.theme-racing) {
+  --page-bg: #0b0d0f;
+  --page-bg-alt: #15181b;
+  --page-surface: #202428;
+  --page-fg: #f2f3f3;
+  --page-fg-muted: #a9afb4;
+  --page-border: #30353a;
+  --page-accent: #e43b32;
+  --page-accent-hover: #f05249;
+  --page-accent-fg: #ffffff;
+  --page-highlight: #e43b32;
+  --page-selection-bg: #e43b32;
+  --page-selection-fg: #ffffff;
+}
+
 /*
   A dark inversion of the global olive/beige palette, scoped to a single
   container. Deliberately NOT a route theme: no [data-theme] and no

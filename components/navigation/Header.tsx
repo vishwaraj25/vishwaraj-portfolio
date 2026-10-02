@@ -86,19 +86,19 @@ export function Header() {
                 className={`w-80 p-3 rounded-2xl border shadow-2xl backdrop-blur-xl ${theme.dropdownBg}`}
               >
                 <Link
-                  href="/case-studies/expedition-33"
+                  href="/case-studies/real-racing-legacy"
                   className={`flex items-start gap-3 p-3 rounded-xl transition-colors group/item ${theme.dropdownItemHover}`}
                 >
-                  <div className="w-9 h-9 rounded-lg bg-[#991B1B] text-white flex items-center justify-center shrink-0 shadow-md">
+                  <div className="w-9 h-9 rounded-lg bg-[#e43b32] text-white flex items-center justify-center shrink-0 shadow-md">
                     <Gamepad2 className="w-4 h-4" />
                   </div>
                   <div>
                     <div className="text-xs font-bold transition-colors flex items-center gap-1">
-                      Clair Obscur: Expedition 33
+                      Real Racing 3: The Last Lap
                       <ArrowUpRight className="w-3 h-3 opacity-80" />
                     </div>
                     <div className="text-[11px] opacity-80 leading-snug mt-0.5">
-                      Active turn-based combat engagement
+                      Preserving player identity at live-service sunset
                     </div>
                   </div>
                 </Link>
@@ -172,15 +172,15 @@ export function Header() {
             </div>
             <div className="space-y-2">
               <Link
-                href="/case-studies/expedition-33"
+                href="/case-studies/real-racing-legacy"
                 onClick={closeMobileMenu}
                 className="flex items-center justify-between p-3.5 rounded-xl border border-current/20"
               >
                 <div className="flex items-center gap-3">
-                  <Gamepad2 className="w-4 h-4 text-[#991B1B]" />
+                  <Gamepad2 className="w-4 h-4 text-[#e43b32]" />
                   <div>
-                    <div className="text-sm font-bold">Clair Obscur: Expedition 33</div>
-                    <div className="text-xs opacity-75">Combat engagement under constraints</div>
+                    <div className="text-sm font-bold">Real Racing 3: The Last Lap</div>
+                    <div className="text-xs opacity-75">Live-service sunset and player identity</div>
                   </div>
                 </div>
                 <ArrowUpRight className="w-4 h-4 opacity-70" />

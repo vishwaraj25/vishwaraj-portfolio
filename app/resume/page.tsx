@@ -13,7 +13,7 @@ import {
 import { PrintButton } from "@/components/resume/PrintButton";
 
 export const metadata = {
-  title: "Resume — Vishwaraj Saxena | Product Portfolio",
+  title: "Vishwaraj Saxena's Resume | Product Portfolio",
   description:
     "Product portfolio resume for Vishwaraj Saxena. Product teardowns, systems and interaction design, consumer logistics, and product strategy.",
 };
@@ -47,7 +47,7 @@ export default function ResumePage() {
                 Vishwaraj Saxena
               </h1>
               <div className="text-sm font-mono text-[var(--page-fg-muted)] font-bold uppercase tracking-wider">
-                Product Portfolio — Systems &amp; Strategy
+                Product Portfolio: Systems &amp; Strategy
               </div>
               <p className="text-sm text-[var(--page-fg-muted)] font-sans max-w-xl leading-relaxed">
                 Specialising in systems deconstruction, player retention mechanics, consumer logistics
@@ -124,23 +124,46 @@ export default function ResumePage() {
             <div className="space-y-2 border-l-2 border-[var(--page-accent)] pl-5 py-1">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <div className="font-editorial font-bold text-lg">
-                  Clair Obscur: Expedition 33 — Eliminating the Turn-Based Combat Cliff
+                  Steam Discovery: helping unfamiliar games earn qualified attention
                 </div>
-                <div className="text-xs font-mono text-[var(--page-fg-muted)]">Game Systems Strategy</div>
+                <div className="text-xs font-mono text-[var(--page-fg-muted)]">Marketplace Product Strategy</div>
               </div>
               <p className="text-sm text-[var(--page-fg-muted)] font-sans leading-relaxed">
-                Formulated a Product Strategy Dossier and Mini-PRD on Sandfall Interactive’s
-                innovative battle loop. Analysed player segmentation across action gamers, hybrid
-                RPGs, and purists to argue how real-time reactive defence (tight parry windows)
-                reduces passive enemy-turn downtime under severe indie team, budget, and engine
-                constraints. Built an interactive 6-stage battle loop simulator and reflex tester.
+                Analysed 21,308 Steam releases in 2025 and 4,244 games tracked during June 2026
+                Next Fest. Identified concentrated discovery outcomes and designed Taste Discovery,
+                an adaptive recommendation concept using player intent, feedback, and exposure
+                balancing to surface relevant, previously unseen games.
               </p>
               <div className="flex items-center gap-2 pt-1 no-print">
                 <Link
-                  href="/case-studies/expedition-33"
+                  href="/case-studies/steam-discovery"
                   className="text-xs font-mono text-[var(--page-fg)] underline font-bold flex items-center gap-1"
                 >
-                  <span>View Interactive Game Breakdown</span>
+                  <span>View Steam Discovery Study</span>
+                  <ExternalLink className="w-3 h-3" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="space-y-2 border-l-2 border-[var(--page-accent)] pl-5 py-1">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <div className="font-editorial font-bold text-lg">
+                  Real Racing 3: preserving player identity at live-service sunset
+                </div>
+                <div className="text-xs font-mono text-[var(--page-fg-muted)]">Service Lifecycle Strategy</div>
+              </div>
+              <p className="text-sm text-[var(--page-fg-muted)] font-sans leading-relaxed">
+                Evaluated the shutdown of a 500M+ download, 13-year mobile live service. Separated
+                server-dependent operations from preservable player history and designed Legacy
+                Garage, a pre-shutdown experience for preparing and exporting eligible career,
+                collection, and achievement records.
+              </p>
+              <div className="flex items-center gap-2 pt-1 no-print">
+                <Link
+                  href="/case-studies/real-racing-legacy"
+                  className="text-xs font-mono text-[var(--page-fg)] underline font-bold flex items-center gap-1"
+                >
+                  <span>View Real Racing Legacy Study</span>
                   <ExternalLink className="w-3 h-3" />
                 </Link>
               </div>

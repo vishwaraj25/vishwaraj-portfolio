@@ -10,18 +10,18 @@ import HeroCurtain from "@/components/home/HeroCurtain";
    needs and the numbering can never disagree with the running order. */
 const CASE_STUDIES = [
   {
-    slug: "/case-studies/epf-claims",
-    kicker: "EPF Claims / Public Infrastructure Product",
-    accent: "#ffb020",
-    title: "One in five people are told no when asking for their own money",
-    question: "How might a member know a claim will fail before they file it?",
-    dek: "An India-specific breakdown of why 1.74 crore provident fund claims were rejected in a single year, and why almost none of it was a decision about eligibility.",
+    slug: "/case-studies/real-racing-legacy",
+    kicker: "Real Racing 3 / Live-Service Sunset",
+    accent: "#e43b32",
+    title: "Five hundred million downloads. What survives the finish line?",
+    question: "How should a live service preserve player identity when the service ends?",
+    dek: "An independent product study of Real Racing 3's shutdown and a proposed Legacy Garage for preserving thirteen years of player history.",
     metrics: [
-      { k: "Claims filed", v: "7.96 cr" },
-      { k: "Rejected", v: "1.74 cr" },
-      { k: "Rejection rate", v: "~22%" },
+      { k: "Downloads", v: "500M+" },
+      { k: "Service life", v: "13 years" },
+      { k: "Shutdown", v: "20 Mar 2026" },
     ],
-    cta: "Read the EPF claims breakdown",
+    cta: "Read the shutdown study",
   },
   {
     slug: "/case-studies/steam-discovery",
@@ -37,38 +37,18 @@ const CASE_STUDIES = [
     ],
     cta: "Read the Steam discovery study",
   },
-  {
-    slug: "/case-studies/expedition-33",
-    kicker: "Clair Obscur: Expedition 33 / Product and Interactive Systems",
-    accent: "#8e1a2b",
-    title: "The kinetic turn: eliminating the engagement cliff",
-    question: "How does a turn-based system stay engaging when the user isn’t acting?",
-    dek: "A systems dossier on Sandfall Interactive’s combat loop, where real-time inputs make passive turns feel active under strict resource constraints.",
-    /* These were "Active screen time 98%" and "Early-funnel churn −34%".
-       Both were removed: Sandfall has never published player telemetry, so
-       neither number had a source, and the case study itself states it has no
-       access to internal data. Descriptive labels replace them rather than
-       substitute numbers, since an unsourced figure is what caused the
-       problem in the first place. */
-    metrics: [
-      { k: "Analysis", v: "Independent" },
-      { k: "Mechanic", v: "Real-time parry" },
-      { k: "Interaction", v: "Loop visualiser" },
-    ],
-    cta: "Read the systems breakdown",
-  },
 ];
 
 const PRINCIPLES = [
   {
     number: "01",
     title: "Deconstruct the incentive",
-    body: "A pricing page, a delivery guarantee, an in-app economy — user behaviour is never irrational, it responds to the incentive structure. Find the incentive and you find the friction.",
+    body: "A pricing page, a delivery guarantee, an in-app economy: user behaviour is never irrational, it responds to the incentive structure. Find the incentive and you find the friction.",
   },
   {
     number: "02",
     title: "Respect the constraints",
-    body: "Good strategy isn’t an infinite wishlist. Product thinking shows under tight budgets, small teams and technical bottlenecks — discipline in scope creates depth of craft.",
+    body: "Good strategy isn’t an infinite wishlist. Product thinking shows under tight budgets, small teams and technical bottlenecks, where discipline in scope creates depth of craft.",
   },
   {
     number: "03",
